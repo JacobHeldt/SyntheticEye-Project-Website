@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,10 +13,45 @@
     #11101d 91.61%
   );
   --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+  --color-secondary: #32ffd6;
+  --color-secondary-partner: #33F5FF;
+  --color-secondary-partner-2: #33FF9C;
+  --gradient-primary: linear-gradient(to right, var(--color-secondary), var(--color-secondary-partner));
+  --secondary-gradient: linear-gradient(to bottom right, var(--color-secondary), var(--color-secondary-partner-2));
 }
 
 * {
   scroll-behavior: smooth;
+}
+
+.primary-gradient {
+  background: var(--gradient-primary);
+}
+
+.secondary-gradient {
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.remove-sec-gradient {
+  background: none;
+  -webkit-background-clip: none;
+  -webkit-text-fill-color: none;
+  background-clip: none;
+  color: white;
+}
+
+.primary-gradient
+
+.font-righteous {
+  font-family: 'Righteous'
+}
+
+.font-secondary {
+  color: var(--color-secondary)
 }
 
 .text-gradient {
@@ -72,7 +108,7 @@
   );
 }
 
-.bg-discount-gradient {
+.bg-quote-gradient {
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
 
