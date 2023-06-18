@@ -1,5 +1,14 @@
 // All static Text shouwn on website
-import { imgslider1, imgslider2, imgslider3, jacobimg, noahimg, aigeneratedaudio, aigenerateddeepfake, aigeneratedface, aigeneratedimage, aigeneratedtext } from "../assets";
+import imgslider1 from '../assets/imgslider1.png';
+import imgslider2 from '../assets/imgslider2.png';
+import imgslider3 from '../assets/imgslider3.png';
+import jacobimg from '../assets/jacobimg.png';
+import noahimg from '../assets/noahimg.png';
+import aigeneratedaudio from '../assets/aigeneratedautio.jpeg';
+import aigenerateddeepfake from '../assets/aigenerateddeepfake.jpeg';
+import aigeneratedface from '../assets/aigeneratedface.jpeg';
+import aigeneratedimage from '../assets/aigeneratedimage.jpeg';
+import aigeneratedtext from '../assets/aigeneratedtext.jpeg';
 
 
 // Navbar items
@@ -95,7 +104,7 @@ export const theModels = [
     {
         id: "textDetection",
         title: 'Text Detector',
-        modelimg: '',
+        modelimg: aigeneratedtext,
         imgsubtitle: '"Text" by bing image creator',
         content: 'A machine learning model that detects AI generated text. These texts can for example be based on ChatGPT generations.'
     },
