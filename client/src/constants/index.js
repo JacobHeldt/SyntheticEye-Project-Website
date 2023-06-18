@@ -110,7 +110,7 @@ export const theModels = [
         id: "deepfakeDetection",
         title: 'Deepfake Detector',
         modelimg: aigenerateddeepfake,
-        imgsubtitle: '"Audio" by bing image creator',
+        imgsubtitle: '"Video" by bing image creator',
         content: 'A machine learning model that can detect advanced deepfakes. This is the highest form of AI generated content detection.'
     }
 ]
