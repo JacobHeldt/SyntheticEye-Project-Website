@@ -3,34 +3,28 @@ import React from 'react'
 import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext, Project, ProjectCard, ProjectText, Quote, Teamcard } from './components'
 
 const App = () => {
-  <div className='bg-primary w-full overflow-hidden'>
-    <div>
+  return (
+    <div className='bg-primary w-full overflow-hidden'>
       <div>
-        Navbar
-      </div>
-    </div>
-
-    <div className='bg-primary'>
-      <div>
-        Hero 
-      </div>
-    </div>
-
-    <div className='bg-primary'>
-      <div>
-          The Project
-        </div>
-
         <div>
-          About Us
+          <Navbar />
         </div>
+      </div>
 
+      <div className='bg-primary'>
         <div>
-          The Models
+          <Hero /> 
         </div>
-    </div>
+      </div>
 
-  </div>
+      <div className='bg-primary'>
+        <Project />
+        <Aboutus />
+        <Models />
+      </div>
+
+    </div>
+  )
 }
 
 export default App
