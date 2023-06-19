@@ -18,6 +18,8 @@
   --color-secondary-partner-2: #33FF9C;
   --gradient-primary: linear-gradient(to right, var(--color-secondary), var(--color-secondary-partner));
   --secondary-gradient: linear-gradient(to bottom right, var(--color-secondary), var(--color-secondary-partner-2));
+  --three-gradient: linear-gradient(to right, var(--color-secondary-partner), var(--color-secondary), var(--color-secondary-partner-2));
+  --dark-bg: #0A0B12;
 }
 
 * {
@@ -26,6 +28,25 @@
 
 .primary-gradient {
   background: var(--gradient-primary);
+}
+
+.text-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5); /* white with 50% opacity */
+  border-radius: 15px; /* round the corners of the div */
+  overflow: hidden; /* hide the overflow caused by the pseudo-element */
+}
+
+.text-card::before {
+  content: "";
+  position: absolute;
+  top: -2px; 
+  right: -2px;
+  bottom: -2px; 
+  left: -2px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* example gradient */
+  z-index: -1; /* position the gradient under the div content */
+  border-radius: inherit; /* apply the same border-radius as the div */
 }
 
 .secondary-gradient {
@@ -44,7 +65,13 @@
   color: white;
 }
 
-.primary-gradient
+.three-gradient {
+  background: var(--three-gradient)
+}
+
+.dark-bg {
+  background: var(--dark-bg);
+}
 
 .font-righteous {
   font-family: 'Righteous'

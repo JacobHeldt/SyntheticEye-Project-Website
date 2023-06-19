@@ -10,6 +10,7 @@ import Personimg from './Personimg';
 import Persontext from './Persontext';
 import Teamcard from './Teamcard';
 import Models from './Models';
+import Divider from './Divider';
 
 export {
     Navbar,
@@ -23,5 +24,6 @@ export {
     Persontext,
     Teamcard,
     Models,
-    ImgSlider
+    ImgSlider,
+    Divider
 }

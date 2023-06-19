@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext, Project, ProjectCard, ProjectText, Quote, Teamcard } from './components'
+import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext, Project, ProjectCard, ProjectText, Quote, Teamcard, Divider } from './components'
 
 const App = () => {
   return (
@@ -17,8 +17,11 @@ const App = () => {
         </div>
       </div>
 
-      <div className='bg-primary'>
+      <Divider />
+
+      <div className='bg-primary dark-bg '>
         <Project />
+        <Divider />
         <Aboutus />
         <Models />
       </div>

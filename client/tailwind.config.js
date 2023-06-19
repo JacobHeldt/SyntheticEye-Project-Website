@@ -9,6 +9,9 @@ module.exports = {
         secondary: "#00f6ff",
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
+        gradient1: "33F5FF",
+        gradient2: "32ffd6",
+        gradient3: "33FF9C",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
