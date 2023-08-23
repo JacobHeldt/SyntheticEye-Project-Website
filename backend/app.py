@@ -111,6 +111,5 @@ def predict():
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
         return response
 
-
 if __name__ == '__main__':
     app.run(debug=True)
