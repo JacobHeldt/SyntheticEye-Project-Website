@@ -10,10 +10,10 @@ const Hero = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleOpenPopup = () => {
-    history.push('/altheia');
+    navigate('/altheia');
   };
 
   const handleClosePopup = () => {

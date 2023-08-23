@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext, Project, ProjectCard, ProjectText, Quote, Teamcard, Divider } from './components'
 import HomePage from './components/HomePage';
+import Aletheia from './components/Aletheia';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
         <div className='bg-primary w-full overflow-hidden'>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/altheia" element={<Aletheia />} />
         </Routes>
         </div>
     </Router>
