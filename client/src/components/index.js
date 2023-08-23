@@ -11,6 +11,7 @@ import Persontext from './Persontext';
 import Teamcard from './Teamcard';
 import Models from './Models';
 import Divider from './Divider';
+import Popup from './Popup';
 
 export {
     Navbar,
@@ -25,5 +26,6 @@ export {
     Teamcard,
     Models,
     ImgSlider,
-    Divider
+    Divider,
+    Popup
 }

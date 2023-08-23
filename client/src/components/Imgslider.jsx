@@ -13,7 +13,7 @@ const Imgslider = ({ images }) => {
   };
 
   return (
-    <div className="relative flex justify-center items-center w-full">
+    <div className="relative flex justify-center items-center w-full md:visible invisible">
     <div className="relative h-96 w-4/5"> {/* change h-screen and w-full to your preferred size */}
       {images.map((image, index) => (
         <img

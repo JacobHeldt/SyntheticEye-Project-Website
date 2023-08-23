@@ -49,6 +49,7 @@
   border-radius: inherit; /* apply the same border-radius as the div */
 }
 
+
 .secondary-gradient {
   background: var(--secondary-gradient);
   -webkit-background-clip: text;
@@ -57,12 +58,17 @@
   color: transparent;
 }
 
+
 .remove-sec-gradient {
   background: none;
   -webkit-background-clip: none;
   -webkit-text-fill-color: none;
   background-clip: none;
   color: white;
+}
+
+.primary-border {
+  border: 1px solid var(--color-secondary);
 }
 
 .three-gradient {
@@ -79,6 +85,10 @@
 
 .font-secondary {
   color: var(--color-secondary)
+}
+
+.font-secondary-outline {
+  color: var(--color-secondary);
 }
 
 .text-gradient {
@@ -100,21 +110,21 @@
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
-    #def9fa -43.27%,
-    #bef3f5 -21.24%,
-    #9dedf0 12.19%,
-    #7de7eb 29.82%,
-    #5ce1e6 51.94%,
-    #33bbcf 90.29%
+    #def9fa 0%,
+    #bef3f5 20%,
+    #9dedf0 40%,
+    #7de7eb 60%,
+    #5ce1e6 80%,
+    #33bbcf 100%
   );
 }
 
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
-    #ffffff -278.56%,
-    #6d6d6d -78.47%,
-    #11101d 91.61%
+    #ffffff 0%,
+    #6d6d6d 50%,
+    #11101d 100%
   );
 }
 
@@ -186,18 +196,35 @@
 .feedback-card:hover {
   background: var(--black-gradient);
 }
-
+/* 
 .blue__gradient {
   background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
   filter: blur(123px);
+} */
+
+.blue__gradient {
+  background: linear-gradient(90deg, #33F5FF 0%, #33F5FF 100%);
+  filter: blur(400px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
 }
 
-.pink__gradient {
-  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
-  filter: blur(900px);
+.darkblue__gradient {
+  background: linear-gradient(90deg, #336CFF 0%, #7299FF 100%);
+  filter: blur(400px);
+  -webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-webkit-transform: translate3d(0, 0, 0);
+-moz-transform: translate3d(0, 0, 0);
 }
 
 .white__gradient {
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
+}
+
+.black-opac-bg {
+  background: #000000a3;
 }

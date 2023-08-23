@@ -7,43 +7,47 @@ import { navLinks } from '../constants'
 import { AiOutlineMenu } from "react-icons/ai"
 
 const Navbar = () => {
+  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false)
 
   return (
-    <div className='flex py-6 justify-between items-center md:ml-36 md:mr-36 ml-8 mr-8 navbar'>
-      <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px]'/>
+    <div>
+      <div className='flex py-4 justify-between items-center fixed top-0 z-50 w-full px-8 md:px-36 navbar black-opac-bg'>
+        <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px]'/>
 
-      <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
-        {navLinks.map((nav, index) => (
-          <li key={nav.id} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10'}`}>
-            <a href={`#${nav.id}`}>
-              {nav.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+        <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
+          {navLinks.map((nav, index) => (
+            <li key={nav.id} onClick={() => setActive(nav.title)} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10' } ${active === nav.title ? "text-white" : "text-dimWhite"}`}>
+              <a href={`#${nav.id}`}>
+                {nav.title}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <div className="sm:hidden flex flex-1 justify-end items-center">
-        <img src={toggle ? close : menu} alt="menu" className='w-[28px] text-blue-500' onClick={() => setToggle((prev) => !prev)}/>
+        <div className="sm:hidden flex flex-1 justify-end items-center">
+          <img src={toggle ? close : menu} alt="menu" className='w-[28px] text-blue-500' onClick={() => setToggle((prev) => !prev)}/>
 
-        <div className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
-        <ul className='list-none flex-col justify-end items-start flex-1'>
-        {navLinks.map((nav, index) => (
-          <li key={nav.id} className={`font-poppins mb-4 font-normal cursor-pointer text-base text-white ' ${index === navLinks.length - 1 ? 'mb-0' : 'mb-4'}`}>
-            <a href={`#${nav.id}`}>
-              {nav.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+          <div className={`${
+              !toggle ? "hidden" : "flex"
+            } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
+          <ul className='list-none flex-col justify-end items-start flex-1'>
+          {navLinks.map((nav, index) => (
+            <li key={nav.id} className={`font-poppins mb-4 font-normal cursor-pointer text-base text-white ' ${index === navLinks.length - 1 ? 'mb-0' : 'mb-4'}`}>
+              <a href={`#${nav.id}`}>
+                {nav.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+          </div>
 
         </div>
 
       </div>
-
     </div>
+
   )
 }
 
