@@ -11,7 +11,7 @@ const App = () => {
         <div className='bg-primary w-full overflow-hidden'>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/altheia" element={<Aletheia />} />
+          <Route path="/aletheia" element={<Aletheia />} />
         </Routes>
         </div>
     </Router>

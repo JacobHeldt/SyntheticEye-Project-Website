@@ -4,11 +4,13 @@ import Project from './Project';
 import Aboutus from './Aboutus';
 import Models from './Models';
 import Divider from './Divider';
+import Navbar from './Navbar';
 
 const HomePage = () => {
   return (
     <div>
-      <div className='bg-primary' id="Home">
+      <Navbar />
+      <div className='bg-primary mt-24' id="Home">
         <Hero /> 
       </div>
 

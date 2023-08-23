@@ -9,6 +9,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import os
 import requests
+from flask_cors import CORS
 
 
 # Model
@@ -71,23 +72,24 @@ class CNN(nn.Module):
     
 # App
 app = Flask(__name__)
+CORS(app, resources={r"/predict": {"origins": "*"}})
 
 MODEL_PATH = 'model.pth'
-ONEDRIVE_LINK = 'https://1drv.ms/u/s!AhUjBN7ZLN3PhDc9CmcGjiObxap1?e=qqbrQ0'
+# ONEDRIVE_LINK = 'https://1drv.ms/u/s!AhUjBN7ZLN3PhDc9CmcGjiObxap1?e=qqbrQ0'
 
-def donwload_model():
-    if not os.path.isfile(MODEL_PATH):
-        # Download the model
-        response = requests.get(ONEDRIVE_LINK, allow_redirects=True)
-        with open(MODEL_PATH, 'wb') as f:
-            f.write(response.content)
+# def donwload_model():
+#     if not os.path.isfile(MODEL_PATH):
+#         # Download the model
+#         response = requests.get(ONEDRIVE_LINK, allow_redirects=True)
+#         with open(MODEL_PATH, 'wb') as f:
+#             f.write(response.content)
 
-# Check if model exists, if not, download it
-donwload_model()
+# # Check if model exists, if not, download it
+# donwload_model()
 
 
 model = CNN()  # Replace with the name of your model class
-model.load_state_dict(torch.load(MODEL_PATH))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
 
 @app.route('/predict', methods=['POST'])
@@ -103,7 +105,12 @@ def predict():
         output = model(image_tensor)
         prediction = (torch.sigmoid(output) > 0.5).item()
 
-        return jsonify({"prediction": prediction})
+        response = jsonify({"prediction": prediction})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+        return response
+
 
 if __name__ == '__main__':
     app.run(debug=True)

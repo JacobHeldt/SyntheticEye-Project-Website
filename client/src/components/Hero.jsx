@@ -13,7 +13,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleOpenPopup = () => {
-    navigate('/altheia');
+    navigate('/aletheia');
   };
 
   const handleClosePopup = () => {
