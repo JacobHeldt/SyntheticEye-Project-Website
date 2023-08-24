@@ -4,3 +4,4 @@ torchvision
 Pillow
 flask_cors
 flask_talisman
+gunicorn
