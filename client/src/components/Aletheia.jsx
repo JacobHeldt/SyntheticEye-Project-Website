@@ -116,8 +116,33 @@ const Aletheia = () => {
                     <b>Warning:</b> While this model has archieved a high accuracy across various images, it may not be always correct.
                 </div>
             
-                <div className='text-white py-6 w-full bg-gray-700'>
-                    <h1></h1>
+                <div className='text-gray-300 py-6 w-full bg-gray-800 '>
+                    <h1 className='text-lg mb-4'>Aletheia was trained on images from the following sources:</h1>
+                    <div className='md:mx-56 mx-2 text-sm'>
+                    <a className='underline' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
+                    <a className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
+                    <a className='underline' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br />
+                    <a className='underline' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
+                    <p>
+                        Liu, Ziwei; Luo, Ping; Wang, Xiaogang; Tang, Xiaoou. (2015). 
+                        <i> Deep Learning Face Attributes in the Wild</i>. 
+                        Proceedings of International Conference on Computer Vision (ICCV), December 2015.
+                        [<a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" target="_blank" rel="noopener noreferrer">Link</a>]
+                    </p><br />
+                    <p>
+                        Bae, Gwangbin; de La Gorce, Martin; Baltrušaitis, Tadas; Hewitt, Charlie; Chen, Dong; 
+                        Valentin, Julien; Cipolla, Roberto; Shen, Jingjing. (2023). 
+                        <i> DigiFace-1M: 1 Million Digital Face Images for Face Recognition</i>. 
+                        2023 IEEE Winter Conference on Applications of Computer Vision (WACV), IEEE.
+                        [<a href="https://microsoft.github.io/DigiFace1M/">Link</a>]
+                    </p><br />
+                    <a className='underline' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br />
+                    <p>
+                        Gary B. Huang, Manu Ramesh, Tamara Berg, Erik Learned-Miller. (2007). 
+                        <i>Labeled Faces in the Wild: A Database for Studying Face Recognition in Unconstrained Environments</i>. 
+                        University of Massachusetts, Amherst, Technical Report 07-49. [<a href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>]
+                    </p>
+                    </div>
                 </div>
         </div>
         </div>
