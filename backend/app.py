@@ -8,7 +8,6 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 from PIL import Image
 import os
-import requests
 from flask_cors import CORS
 from flask_talisman import Talisman
 
@@ -141,3 +140,5 @@ def predict():
         else:
             return jsonify({"error": "Invalid file type"}), 400
 
+# if __name__ == '__main__':
+#     app.run()
