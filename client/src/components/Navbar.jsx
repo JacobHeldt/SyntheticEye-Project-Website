@@ -5,22 +5,31 @@ import menu from '../assets/menu.svg'
 import close from '../assets/close.svg'
 import { navLinks } from '../constants'
 import { AiOutlineMenu } from "react-icons/ai"
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
+
+  const navigate = useNavigate();
+
+  const navigateHome = () => {
+    navigate('/');
+  };
+
+  const navigation = (link) => {
+    navigate(`/${link}`);
+  }
 
   return (
     <div>
       <div className='flex py-4 justify-between items-center fixed top-0 z-50 w-full px-8 md:px-36 navbar black-opac-bg'>
-        <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px]'/>
+        <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px] z-10' onClick={navigateHome} />
 
         <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
           {navLinks.map((nav, index) => (
-            <li key={nav.id} onClick={() => setActive(nav.title)} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10' } ${active === nav.title ? "text-white" : "text-dimWhite"}`}>
-              <a href={`#${nav.id}`}>
+            <li key={nav.id} onClick={() => navigation(nav.id)} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10' } ${active === nav.title ? "text-white" : "text-dimWhite"}`}>
                 {nav.title}
-              </a>
             </li>
           ))}
         </ul>

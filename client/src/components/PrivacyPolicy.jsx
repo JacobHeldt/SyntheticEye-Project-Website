@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 const PrivacyPolicy = () => {
   return (
     <div className='bg-primary min-h-screen font-poppins mx-24 mt-12 text-gray-300'>
-        <h1 className='text-3xl mb-4 text-secondary font-righteous text-center'>Privacy Policy for SyntheticEye</h1>
+        <Navbar className='relative'/>
+        <h1 className='text-3xl mb-4 text-secondary font-righteous text-center relative mt-24'>Privacy Policy for SyntheticEye</h1>
 
         <h3 className='text-2xl font-righteous text-white'>Introduction</h3>
         <div className='mb-2'>
@@ -45,7 +47,7 @@ const PrivacyPolicy = () => {
             Right to Erasure (Right to be Forgotten): Given that we do not store your images or any associated data post-prediction, there is no persistent data to erase. However, you can always contact us if you have concerns about how your data is handled. <br />
         </div>
 
-        <div>
+        <div className='mb-8'>
             We prioritize your privacy and are committed to maintaining the confidentiality and security of any data you entrust to our service. If you have any questions about our data practices, please contact us.
         </div>
     </div>

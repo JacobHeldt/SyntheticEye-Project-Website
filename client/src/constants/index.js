@@ -12,22 +12,33 @@ import aigeneratedtext from '../assets/aigeneratedtext.jpeg';
 
 
 // Navbar items
+// export const navLinks = [
+//     {
+//         id: "home",
+//         title: "Home"
+//     },
+//     {
+//         id: "project",
+//         title: "Project"
+//     },
+//     {
+//         id: "about_us",
+//         title: "About us"
+//     },
+//     {
+//         id: "models",
+//         title: "Models"
+//     }
+// ]
+
 export const navLinks = [
     {
-        id: "home",
-        title: "Home"
+        id: "aletheia",
+        title: "Face Detection"
     },
     {
-        id: "project",
-        title: "Project"
-    },
-    {
-        id: "about_us",
-        title: "About us"
-    },
-    {
-        id: "models",
-        title: "Models"
+        id: "privacy-policy",
+        title: "Privacy Policy"
     }
 ]
 
