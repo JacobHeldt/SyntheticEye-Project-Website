@@ -72,7 +72,7 @@ class CNN(nn.Module):
     
 # App
 app = Flask(__name__)
-CORS(app, resources={r"/predict": {"origins": "*"}})
+CORS(app, resources={r"/predict": {"origins": "https://syntheticeye.dev"}})
 
 MODEL_PATH = 'model.pth'
 # ONEDRIVE_LINK = 'https://1drv.ms/u/s!AhUjBN7ZLN3PhDc9CmcGjiObxap1?e=qqbrQ0'
@@ -112,4 +112,4 @@ def predict():
         return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

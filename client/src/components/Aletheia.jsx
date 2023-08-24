@@ -64,8 +64,8 @@ const Aletheia = () => {
 
                 <div className="flex items-center justify-center">
                 <div className="text-gray-300 text-sm w-5/6 md:w-4/6 text-center mb-8 md:text-base">
-                    Aletheia, inspired by the Greek goddess of truth and disclosure, is an advanced AI model designed to discern between real human faces and those crafted by artificial intelligence. 
-                    <span className="hidden sm:inline">Using cutting-edge machine learning technology, Altheia helps everyone to distinguish AI-generated faces from real faces.</span>
+                    Aletheia, inspired by the Greek goddess of truth and disclosure, is our advanced AI model designed to discern between real human faces and those crafted by artificial intelligence. 
+                    <span className="hidden sm:inline"> Using cutting-edge machine learning technology, Altheia helps everyone to distinguish AI-generated faces from real faces.</span>
                 </div>
                 </div>
 
