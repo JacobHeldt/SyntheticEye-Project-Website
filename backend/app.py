@@ -10,6 +10,9 @@ from PIL import Image
 import os
 import requests
 from flask_cors import CORS
+from flask_talisman import Talisman
+from flask_limiter import Limiter
+
 
 
 # Model
@@ -70,9 +73,15 @@ class CNN(nn.Module):
 
         return x
     
+
+
+
+    
 # App
 app = Flask(__name__)
 CORS(app, resources={r"/predict": {"origins": "https://syntheticeye.dev"}})
+talisman = Talisman(app)
+
 
 MODEL_PATH = 'model.pth'
 # ONEDRIVE_LINK = 'https://1drv.ms/u/s!AhUjBN7ZLN3PhDc9CmcGjiObxap1?e=qqbrQ0'
@@ -88,6 +97,22 @@ MODEL_PATH = 'model.pth'
 # donwload_model()
 
 
+
+
+
+# Security
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+MAX_IMAGE_SIZE = 5 * 1024 * 1024 
+app.config['MAX_CONTENT_LENGTH'] = MAX_IMAGE_SIZE
+
+
+
+
+
+
 model = CNN()  # Replace with the name of your model class
 model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
@@ -96,20 +121,27 @@ model.eval()
 def predict():
     if request.method == 'POST':
         file = request.files['file']
-        image = Image.open(file.stream).convert('RGB')
-        transform = transforms.Compose([
-            transforms.Resize((256, 256)),
-            transforms.ToTensor(),
-        ])
-        image_tensor = transform(image).unsqueeze(0)
-        output = model(image_tensor)
-        prediction = (torch.sigmoid(output) > 0.5).item()
 
-        response = jsonify({"prediction": prediction})
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-        return response
+        if file.filename == '':
+            return jsonify({"error": "No file selected"}), 400
+        
+        if file and allowed_file(file.filename):
+    
+            image = Image.open(file.stream).convert('RGB')
+            transform = transforms.Compose([
+                transforms.Resize((256, 256)),
+                transforms.ToTensor(),
+            ])
+            image_tensor = transform(image).unsqueeze(0)
+            output = model(image_tensor)
+            prediction = (torch.sigmoid(output) > 0.5).item()
+
+            response = jsonify({"prediction": prediction})
+
+            return response    
+        else:
+            return jsonify({"error": "Invalid file type"}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=False)
+    
