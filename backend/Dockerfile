@@ -17,4 +17,4 @@ EXPOSE 5000
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:5000", "--workers", "2"]
+CMD ["python", "app.py"]
