@@ -78,7 +78,7 @@ class CNN(nn.Module):
     
 # App
 app = Flask(__name__)
-CORS(app, resources={r"/predict": {"origins": "syntheticeye.dev"}})
+CORS(app, resources={r"/predict": {"origins": "https://syntheticeye.dev"}})
 talisman = Talisman(app)
 
 
