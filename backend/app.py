@@ -10,6 +10,7 @@ from PIL import Image
 import os
 from flask_cors import CORS
 from flask_talisman import Talisman
+import requests
 
 
 
@@ -94,8 +95,17 @@ MODEL_PATH = 'model.pth'
 # # Check if model exists, if not, download it
 # donwload_model()
 
+DROPBOX_LINK = 'https://www.dropbox.com/scl/fi/0pgoi8pfvqiq0vdpldte8/model.pth?rlkey=t1vcg9kbxfo0enbvi3auiigx0&dl=1'
 
+def download_model():
+    if not os.path.isfile(MODEL_PATH):
+        # Download the model
+        response = requests.get(DROPBOX_LINK, stream=True)
+        with open(MODEL_PATH, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
 
+download_model()
 
 
 # Security
