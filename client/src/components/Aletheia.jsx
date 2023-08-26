@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { DotLoader, RingLoader } from "react-spinners";
+import { AiFillCheckCircle } from 'react-icons/ai';
 
 const Aletheia = () => {
     const [result, setResult] = useState(null);
@@ -12,7 +13,6 @@ const Aletheia = () => {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async () => {
-        setLoading(true);
         const selectedFile = fileInput.current?.files[0];
 
         setError(null);
@@ -29,6 +29,8 @@ const Aletheia = () => {
         }
     
         setFileSelected(true);
+
+        setLoading(true);
 
         const formData = new FormData();
         formData.append('file', selectedFile);
@@ -51,6 +53,12 @@ const Aletheia = () => {
             setLoading(false);
         }
     };
+
+    function triggerFileInput(e) {
+        e.stopPropagation();
+        fileInput.current.click();
+    }
+
 
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
@@ -83,7 +91,7 @@ const Aletheia = () => {
                                 padding: '0.1rem',
                             }}
                         >
-                        <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener noreferrer">
                             <div className="z-10 h-full w-full md:text-sm text-xs md:tracking-wide tracking-tight md:p-6 bg-gray-800 rounded-3xl p-4 text-white font-poppins flex items-center justify-center">
                                 StyleGAN
                             </div>
@@ -95,19 +103,25 @@ const Aletheia = () => {
                 
                 <div className="relative md:w-[40vw] mx-auto">
 
-                <div className="md:py-16 py-6 px-16 border-secondary file_border_radius text-center cursor-pointer hover:bg-gray-800 text-white">
-                        <input 
-                            type="file" 
-                            accept="image/*"
-                            className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer text-white" 
-                            ref={fileInput} 
-                            onChange={handleFileChange}
-                        />
-                        Click or drop file here to upload
+                <div onClick={triggerFileInput} className="md:py-16 py-6 px-16 border-secondary file_border_radius text-center cursor-pointer hover:bg-gray-800 text-gray-300 flex items-center justify-center h-[specificHeight] overflow-hidden">
+                    <input 
+                        type="file" 
+                        accept="image/*"
+                        className="absolute top-0 left-0 w-[0px] h-[0px] opacity-0 cursor-pointer text-gray-300 text-xl" 
+                        ref={fileInput} 
+                        onChange={handleFileChange}
+                    />
+                    <div className={`${fileSelected ? 'opacity-80' : 'opacity-80'} flex items-center justify-center h-full w-full text-lg`}>
+                        {
+                            fileSelected 
+                            ? <AiFillCheckCircle size={26} />
+                            : "Click or drop file here to upload"
+                        }
                     </div>
                 </div>
+                </div>
 
-                <div className="flex justify-center items-center mdw-[40vw] mx-auto"> 
+                <div className="flex justify-center items-center md:w-[40vw] mx-auto"> 
                 <div className="w-full bg-white flex items-center justify-center p-[12px] mb-0 bg-opacity-0 privacy_box">
                     <div className=""> {/* This will constrain the width to a readable length */}
                         <label className="flex items-center text-sm text-gray-300">
@@ -125,7 +139,7 @@ const Aletheia = () => {
                 
                 <button 
                         onClick={handleSubmit} 
-                        className={`primary-gradient tracking-wider font-righteous  md:px-10 md:py-2 text-lg uppercase rounded-md hover:rounded-lg py-1 mt-6 w-full relativ mdw-[40%] mx-auto ${fileSelected ? 'opacity-100' : 'opacity-30'} cursor-${fileSelected ? 'pointer' : 'not-allowed'} mb-8`}
+                        className={`primary-gradient tracking-wider font-righteous  md:px-10 md:py-2 text-lg uppercase rounded-md hover:rounded-lg py-1 mt-6 w-full relativ md:w-[40%] mx-auto ${fileSelected ? 'opacity-100' : 'opacity-30'} cursor-${fileSelected ? 'pointer' : 'not-allowed'} mb-8`}
                     >
                         Submit
                     </button>

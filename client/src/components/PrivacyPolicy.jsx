@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
     <div className='bg-primary min-h-screen font-poppins mt-12 text-gray-300'>
         <Navbar className='relative'/>
 
-        <div className='mx-24'>
+        <div className='md:mx-24 mx-8'>
             <h1 className='text-3xl mb-4 text-secondary font-righteous text-center relative mt-24'>Privacy Policy for SyntheticEye</h1>
 
             <h3 className='text-2xl font-righteous text-white'>Introduction</h3>
