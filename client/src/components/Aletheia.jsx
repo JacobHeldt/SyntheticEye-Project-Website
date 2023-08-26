@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import { DotLoader, RingLoader } from "react-spinners";
 
 const Aletheia = () => {
     const [result, setResult] = useState(null);
@@ -8,8 +9,10 @@ const Aletheia = () => {
     const fileInput = useRef(null);
     const [fileSelected, setFileSelected] = useState(false);
     const [isConsentGiven, setIsConsentGiven] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async () => {
+        setLoading(true);
         const selectedFile = fileInput.current?.files[0];
 
         setError(null);
@@ -31,7 +34,7 @@ const Aletheia = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/predict', {
+            const response = await fetch('https://syntheticeye-dev.onrender.com/predict', {
                 method: 'POST',
                 mode: 'cors',
                 body: formData,
@@ -44,6 +47,8 @@ const Aletheia = () => {
         } catch (err) {
             console.error('Error:', err);
             setError("An error occurred. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -63,14 +68,47 @@ const Aletheia = () => {
                 <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>AI-GENERATED FACE DETECTION</div>
 
                 <div className="flex items-center justify-center">
-                <div className="text-gray-300 text-sm w-5/6 md:w-4/6 text-center mb-8 md:text-base">
-                    Aletheia, inspired by the Greek goddess of truth and disclosure, is our advanced AI model designed to discern between real human faces and those crafted by artificial intelligence. 
-                    <span className="hidden sm:inline"> Using cutting-edge machine learning technology, Altheia helps everyone to distinguish AI-generated faces from real faces.</span>
+                <div className="text-gray-300 text-sm w-5/6 md:w-4/6 text-center mb-4 md:text-sm">
+                    Aletheia, named after the Greek goddess of truth, is our AI model that differentiates real human faces from AI-generated ones using advanced machine learning.
                 </div>
                 </div>
 
-                <div className="flex justify-center items-center bg-yourPreferredBackground"> 
-                <div className="md:w-4/6 w-full bg-gray-700 flex items-center justify-center p-4 mb-6 rounded-xl">
+
+                <div className='mb-6'>
+                        <h3 className='text-white text-lg mb-2'>Aletheia can detect: </h3>
+                        <div 
+                            className="md:h-24 md:w-24 h-20 w-20 rounded-3xl z-10 mx-auto"
+                            style={{ 
+                                background: 'linear-gradient(to right, #33F5FF, #32ffd6, #33FF9C)', 
+                                padding: '0.1rem',
+                            }}
+                        >
+                        <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+                            <div className="z-10 h-full w-full md:text-sm text-xs md:tracking-wide tracking-tight md:p-6 bg-gray-800 rounded-3xl p-4 text-white font-poppins flex items-center justify-center">
+                                StyleGAN
+                            </div>
+                        </a>
+                        </div>
+                </div>
+
+                
+                
+                <div className="relative md:w-[40vw] mx-auto">
+
+                <div className="md:py-16 py-6 px-16 border-secondary file_border_radius text-center cursor-pointer hover:bg-gray-800 text-white">
+                        <input 
+                            type="file" 
+                            accept="image/*"
+                            className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer text-white" 
+                            ref={fileInput} 
+                            onChange={handleFileChange}
+                        />
+                        Click or drop file here to upload
+                    </div>
+                </div>
+
+                <div className="flex justify-center items-center mdw-[40vw] mx-auto"> 
+                <div className="w-full bg-white flex items-center justify-center p-[12px] mb-0 bg-opacity-0 privacy_box">
                     <div className=""> {/* This will constrain the width to a readable length */}
                         <label className="flex items-center text-sm text-gray-300">
                             <input 
@@ -79,32 +117,29 @@ const Aletheia = () => {
                                 onChange={() => setIsConsentGiven(prev => !prev)} 
                                 className="mr-2"
                             />
-                            <span className="ml-2 text-white md:text-base text-sm">I agree to the processing of this image as outlined in the <Link to="/privacy-policy" className="underline hover:text-blue-500">Privacy Policy</Link>.</span>
+                            <span className="ml-2 text-white md:text-xs text-sm">I agree to the processing of this image as outlined in the <Link to="/privacy-policy" className="underline hover:text-blue-500">Privacy Policy</Link>.</span>
                         </label>
                     </div>
                 </div>
                 </div>
                 
-                <div className="relative w-full max-w-md mx-auto">
-
-                <div className="md:py-16 py-6 px-16 border-secondary rounded-lg text-center cursor-pointer hover:bg-gray-800 text-white">
-                        <input 
-                            type="file" 
-                            className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer text-white" 
-                            ref={fileInput} 
-                            onChange={handleFileChange}
-                        />
-                        Click or drop file here to upload
-                    </div>
-                </div>
                 <button 
                         onClick={handleSubmit} 
-                        className={`primary-gradient tracking-wider font-righteous  md:px-10 md:py-3 text-lg uppercase rounded-md hover:rounded-lg py-1 mt-8 w-full relativ max-w-md mx-auto ${fileSelected ? 'opacity-100' : 'opacity-30'} cursor-${fileSelected ? 'pointer' : 'not-allowed'} mb-8`}
+                        className={`primary-gradient tracking-wider font-righteous  md:px-10 md:py-2 text-lg uppercase rounded-md hover:rounded-lg py-1 mt-6 w-full relativ mdw-[40%] mx-auto ${fileSelected ? 'opacity-100' : 'opacity-30'} cursor-${fileSelected ? 'pointer' : 'not-allowed'} mb-8`}
                     >
                         Submit
                     </button>
 
-                <div className='text-gray-300 mb-2'>This image is most likely</div>
+                    {loading && (
+                        <div className='overlayStyle text-white'>
+                            <div className='containerStyle'>
+                                <DotLoader color={"#32ffd6"} size={75} />
+                                <p className='loading_text'>Aletheia is thinking...</p>
+                            </div>
+                        </div>
+                    )}
+
+                <div className='text-gray-300 mb-2'>This face is most likely</div>
                 {result && (
                 <div className={`flex items-center justify-center font-righteous mb-4`}>
                     <div className={`text-center ${result.prediction ? 'bg-secondary' : 'bg-fake'} md:text-2xl text-xl md:w-1/6 w-4/6 md:p-4 p-2`}>
@@ -114,8 +149,8 @@ const Aletheia = () => {
                 )}
                 {error && <div className="text-red-500">{error}</div>}
 
-                <div className="mt-10 left-0 w-full bg-red-500 bg-opacity-50 text-gray-200 text-center p-4 text-sm">
-                    <b>Warning:</b> While this model has archieved a high accuracy across various images, it may not be always correct. Our model is specifically trained to detect faces generated by AI models, such as the NVIDIA StyleGAN used in platforms like 'This Person Does Not Exist'. However, it is not optimized to detect images or faces from AI art generators like 'Stable Diffusion'. Our general AI-Image detector (Argus) is better suited for that.
+                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-50 text-gray-200 text-center p-4 text-sm">
+                <b>Warning:</b> Although our model excels with StyleGAN images, it may not always be accurate. It's designed to spot faces from AI sources like 'This Person Does Not Exist', but not AI art generators like 'Stable Diffusion'. For broader AI-image detection, consider our Argus model.
                 </div>
             
                 <div className='text-gray-300 py-14 w-full bg-gray-50 bg-opacity-10'>
