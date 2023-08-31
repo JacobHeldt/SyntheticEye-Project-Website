@@ -37,10 +37,65 @@ export const navLinks = [
         title: "Face Detection"
     },
     {
+        id: "content-library",
+        title: "Content Library"
+    },
+    {
         id: "privacy-policy",
         title: "Privacy Policy"
     }
 ]
+
+
+
+
+export const learn_featured = [
+    {
+        title: "From Creation to Detection: AI's Central Role in Misinformation",
+        link: "https://www.linkedin.com/pulse/from-creation-detection-ais-central-role-jacob-heldt%3FtrackingId=sXEbSOSOS8a5gPChd2mrow%253D%253D/?trackingId=sXEbSOSOS8a5gPChd2mrow%3D%3D",
+        description: "AI can create and detect deepfakes, a threat to truth. SyntheticEye is an app to verify content authenticity.",
+        date: "26 Aug 2023",
+        time_to_read: "2min",
+        author: "Jacob Heldt, Noah Brömme",
+        icon: "FaEye"
+    },
+    {
+        title: "The Dangers of AI generated Content",
+        link: "https://www.linkedin.com/pulse/dangers-ai-generated-content-jacob-heldt/?trackingId=VUvznYHnQM6AHB1zg97uwA%3D%3D",
+        description: "AI-generated content can spread misinformation, bias, plagiarism, and reduce human creativity. We need ethical guidelines and AI detectors.",
+        date: "23 Jun 2023",
+        time_to_read: "3min",
+        author: "Jacob Heldt, Noah Brömme",
+        icon: "FaNewspaper"
+    },
+    {
+        title: "What are deepfakes – and how can you spot them?",
+        link: "https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them",
+        description: "AI-generated fake videos are becoming more common and dangerous. They can deceive, harass and erode trust. How to detect and regulate them?",
+        date: "13 Jan 2020",
+        time_to_read: "10min",
+        author: "The Guardian, Ian Sample",
+        icon: "FaBalanceScaleLeft"
+    },
+    {
+        title: "What Is AI-Generated Content?",
+        link: "https://proofed.com/knowledge-hub/what-is-ai-generated-content/",
+        description: "AI can generate or assist content creation, but has risks and limitations. Use with caution and proofread before publishing.",
+        date: "21 Mr 2023",
+        time_to_read: "7min",
+        author: "Proofed",
+        icon: "FaMagnifyingGlass"
+    }
+]
+export const learn_standard = [
+    {
+        title: "How to spot AI-generated text",
+        link: "https://www.technologyreview.com/2022/12/19/1065596/how-to-spot-ai-generated-text/",
+        description: ""
+    }
+]
+
+
 
 
 // Our project

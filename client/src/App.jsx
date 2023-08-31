@@ -5,6 +5,7 @@ import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext
 import HomePage from './components/HomePage';
 import Aletheia from './components/Aletheia';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import ContentLibrary from './components/ContentLibrary';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/aletheia" element={<Aletheia />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />}></Route>
+          <Route path='content-library' element={<ContentLibrary />}></Route>
         </Routes>
         </div>
     </Router>
