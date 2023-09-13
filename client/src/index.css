@@ -4,6 +4,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* 32ffd6 */
 
 :root {
   --black-gradient: linear-gradient(
@@ -124,10 +125,25 @@
   .iframe-container {
       padding-top: 60%; /* Adjust this value based on how tall you want the iframe to be on mobile */
   }
+  .article {
+    display: inline-block;
+    margin-right: 12px; 
+    width: auto;
+  }
 }
 @media screen and (max-width: 768px) {
   .right-column {
       display: none;
+  }
+  .slider {
+    width: 100%;
+    overflow-x: auto; /* or use scroll */
+    white-space: nowrap; /* To ensure inline elements don't break onto the next line */
+  }
+  
+  .slider > div {
+    display: inline-block;
+    width: 100%; /* or set a fixed width, e.g., width: 250px; */
   }
 }
 @media screen and (min-width: 768px) {
@@ -222,8 +238,8 @@
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
-    #ffffff 0%,
-    #6d6d6d 50%,
+    #696969e9 0%,
+    #3c3c3c 50%,
     #11101d 100%
   );
 }
@@ -231,7 +247,7 @@
 .bg-black-gradient-2 {
   background: linear-gradient(
     -168.39deg,
-    #ffffff -278.56%,
+    #ffffff96 -278.56%,
     #6d6d6d -78.47%,
     #11101d 91.61%
   );
@@ -342,8 +358,11 @@
 
 .slider {
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   white-space: nowrap;
+}
+.slider > div {
+  display: inline-block;
 }
 
 .slider::-webkit-scrollbar {
@@ -351,11 +370,22 @@
 }
 
 .article {
-  display: inline-block;
-  width: calc(50% - 6px); 
-  margin-right: 12px; 
+  width: 100%;
+  margin-right: 15px; 
 }
 
 .arrow-button {
   cursor: pointer;
+}
+
+/* This targets screens 640px and larger (e.g., tablets and desktops) */
+@media (min-width: 640px) {
+  .article {
+    width: calc(50% - 6px); 
+    margin-right: 12px; 
+  }
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -150,8 +150,8 @@ const Aletheia = () => {
                     <div className='text-gray-300 mb-2'>This face is most likely</div>
                     {result && (
                     <div className={`flex items-center justify-center font-righteous mb-4`}>
-                        <div className={`text-center ${result.prediction ? 'bg-secondary' : 'bg-fake'} md:text-2xl text-xl md:w-1/6 w-4/6 md:p-4 p-2`}>
-                            {result.prediction ? "REAL" : "AI-GENERATED"}
+                        <div className={`text-center ${result.prediction ? 'bg-secondary' : 'bg-fake'} md:text-2xl text-xl md:w-3/6 w-4/6 md:p-4 p-2`}>
+                            {result.prediction ? "HUMAN" : "AI-GENERATED"}
                         </div>
                     </div>
                     )}

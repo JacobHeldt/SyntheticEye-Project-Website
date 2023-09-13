@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import Aletheia from './components/Aletheia';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ContentLibrary from './components/ContentLibrary';
+import ContentLibraryTechnical from './components/ContentLibraryTechnical';
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/aletheia" element={<Aletheia />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />}></Route>
-          <Route path='content-library' element={<ContentLibrary />}></Route>
+          <Route path='content-library-general' element={<ContentLibrary />}></Route>
+          <Route path='content-library-technical' element={<ContentLibraryTechnical />}></Route>
         </Routes>
         </div>
     </Router>

@@ -37,7 +37,7 @@ export const navLinks = [
         title: "Face Detection"
     },
     {
-        id: "content-library",
+        id: "content-library-general",
         title: "Content Library"
     },
     {
@@ -49,7 +49,7 @@ export const navLinks = [
 
 
 
-export const learn_featured = [
+export const general_featured = [
     {
         title: "From Creation to Detection: AI's Central Role in Misinformation",
         link: "https://www.linkedin.com/pulse/from-creation-detection-ais-central-role-jacob-heldt%3FtrackingId=sXEbSOSOS8a5gPChd2mrow%253D%253D/?trackingId=sXEbSOSOS8a5gPChd2mrow%3D%3D",
@@ -57,7 +57,8 @@ export const learn_featured = [
         date: "26 Aug 2023",
         time_to_read: "2min",
         author: "Jacob Heldt, Noah Brömme",
-        icon: "FaEye"
+        icon: "FaEye",
+        form: "Article"
     },
     {
         title: "The Dangers of AI generated Content",
@@ -66,7 +67,8 @@ export const learn_featured = [
         date: "23 Jun 2023",
         time_to_read: "3min",
         author: "Jacob Heldt, Noah Brömme",
-        icon: "FaNewspaper"
+        icon: "FaNewspaper",
+        form: "Article"
     },
     {
         title: "What are deepfakes – and how can you spot them?",
@@ -75,7 +77,8 @@ export const learn_featured = [
         date: "13 Jan 2020",
         time_to_read: "10min",
         author: "The Guardian, Ian Sample",
-        icon: "FaBalanceScaleLeft"
+        icon: "FaBalanceScaleLeft",
+        form: "Article"
     },
     {
         title: "What Is AI-Generated Content?",
@@ -84,14 +87,216 @@ export const learn_featured = [
         date: "21 Mr 2023",
         time_to_read: "7min",
         author: "Proofed",
-        icon: "FaMagnifyingGlass"
+        icon: "FaGlasses",
+        form: "Article"
     }
 ]
-export const learn_standard = [
+export const general_standard = [
     {
         title: "How to spot AI-generated text",
         link: "https://www.technologyreview.com/2022/12/19/1065596/how-to-spot-ai-generated-text/",
-        description: ""
+        description: "AI-generated text is hard to detect and can mislead online. We need better tools, transparency and education to counter it.",
+        date: "19 Dec 2022",
+        time_to_read: "10min",
+        author: "MIT Technology Review, Melissa Heikkilä",
+        icon: "FaGlasses",
+        form: "Article"
+    },
+    {
+        title: "How Do AI Detectors Work? | Methods & Reliability",
+        link: "https://www.scribbr.com/ai-tools/how-do-ai-detectors-work/",
+        description: "AI detectors exist that help at identifying AI-generated text. They are useful but not completely reliable. Learn how to use and spot AI-generated content.",
+        date: "1 May 2023",
+        time_to_read: "8min",
+        author: "Scribbr, Jack Caulfield",
+        icon: "FaTools",
+        form: "Article"
+    },
+    {
+        title: "Ethical concerns mount as AI takes bigger decision-making role",
+        link: "https://news.harvard.edu/gazette/story/2020/10/ethical-concerns-mount-as-ai-takes-bigger-decision-making-role/",
+        description: "AI has many benefits and risks for society. Experts debate how to regulate and use it ethically.",
+        date: "26 Oct 2020",
+        time_to_read: "10min",
+        author: "The Harvard Gazette, Christina Pazzanese",
+        icon: "FaBalanceScaleLeft",
+        form: "Article"
+    },
+    {
+        title: "Advances in artificial intelligence raise new ethics concerns",
+        link: "https://www.youtube.com/watch?v=l5nTlHeqYOQ",
+        description: "The video discusses how AI's negative effects can be curbed, by pursuing inclusive and public-interest-oriented development alongside technical progress.",
+        date: "10 Jan 2023",
+        time_to_read: "8min",
+        author: "PBS NewsHour",
+        icon: "FaBalanceScaleLeft",
+        form: "Video"
+    },
+    {
+        title: "If it wasn’t created by a human artist, is it still art?",
+        link: "https://news.harvard.edu/gazette/story/2023/08/is-art-generated-by-artificial-intelligence-real-art/",
+        description: "Harvard faculty from different arts fields share their views on AI as a threat, collaborator, or tool.",
+        date: "15 Aug 2023",
+        time_to_read: "7min",
+        author: "The Harvard Gazette, Liz Mineo",
+        icon: "FaPaintBrush",
+        form: "Article"
+    }
+]
+
+
+export const technical_featured = [
+    {
+        title: "PyTorch for Deep Learning & Machine Learning",
+        link: "https://youtu.be/V_xro1bcAuA?si=7WUPbfnTcw8a_-lI",
+        description: "Learn PyTorch for deep learning in this comprehensive course for beginners. PyTorch is a popular machine learning framework we used for our model.",
+        date: "6 Oct 2022",
+        time_to_read: "24h",
+        author: "freeCodeCamp, mrdbourke",
+        icon: "FaFire",
+        form: "Video"
+    },
+    {
+        title: "Learn the Basics",
+        link: "https://pytorch.org/tutorials/beginner/basics/intro.html",
+        description: "Familiarize yourself with basic PyTorch concepts. Topcis include Datasets, Tensors, and Transformers.",
+        date: "",
+        time_to_read: "3min",
+        author: "Pytorch",
+        icon: "FaFireAlt",
+        form: "Text"
+    },
+    {
+        title: "Neural Networks by 3Blue1Brown",
+        link: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
+        description: "Learn the fundamentals of backpropagation, a crucial algorithm in machine learning, as well as neural networks.",
+        date: "",
+        time_to_read: "",
+        author: "3Blue1Brown",
+        icon: "FaEye",
+        form: "Video"
+    },
+]
+export const technical_standard = [
+    {
+        title: "Deep Learning With PyTorch - Full Course",
+        link: "https://www.youtube.com/watch?v=c36lUUr864M&t=6857s",
+        description: "In this course, the most important concepts for machine learning are covered",
+        date: "",
+        time_to_read: "4:30h",
+        author: "Patrik Loeber",
+        icon: "FaFire",
+        form: "Video"
+    },
+    {
+        title: "Pytorch: Zero to GANs",
+        link: "https://www.youtube.com/watch?v=GIsg-ZUy0MY&t=16946s",
+        description: "This relatively beginner-friendly course teaches you how to build deep learning models with PyTorch and Python.",
+        date: "1 May 2023",
+        time_to_read: "9:30h",
+        author: "freeCodeCamp, Jovian",
+        icon: "FaArrowUp",
+        form: "Video"
+    },
+    {
+        title: "Deep Learning Basics: Introduction and Overview",
+        link: "https://www.youtube.com/watch?v=O5xeyoRL95U&t=652s",
+        description: "This is an introductory lecture for a MIT course by Lex Fridman. The basics of deep learning are explained here",
+        date: "Jan 11, 2019",
+        time_to_read: "1h",
+        author: "Lex Fridman",
+        icon: "FaCode",
+        form: "Video"
+    },
+    {
+        title: "Welcome to Pytorch Tutorials",
+        link: "https://pytorch.org/tutorials/",
+        description: "Familiarize yourself with PyTorch concepts and modules. Learn how to load data, build deep neural networks, train and save your models in this quickstart guide.",
+        date: "",
+        time_to_read: "",
+        author: "PyTorch",
+        icon: "FaBook",
+        form: "Text"
+    },
+    {
+        title: "Machine Learning Crash Coursewith TensorFlow APIs",
+        link: "https://developers.google.com/machine-learning/crash-course/",
+        description: "Google's fast-paced, practical introduction to machine learning, featuring a series of lessons with video lectures, real-world case studies, and hands-on practice exercises.",
+        date: "",
+        time_to_read: "",
+        author: "Google",
+        icon: "FaGoogle",
+        form: "Video"
+    },
+    {
+        title: "Machine Learning Tutorial",
+        link: "https://www.geeksforgeeks.org/machine-learning/",
+        description: "Machine Learning tutorial covers basic and advanced concepts, specially designed to cater to both students and experienced working professionals.",
+        date: "",
+        time_to_read: "",
+        author: "geeksforgeeks",
+        icon: "FaBookOpen",
+        form: "Text"
+    },
+    {
+        title: "Stanford CS229: Machine Learning Full Course taught by Andrew Ng",
+        link: "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU",
+        description: "This course, taught by Andrew Ng, offers a thorough introduction to statistical pattern recognition and machine learning. A wide range of topics is covered.",
+        date: "",
+        time_to_read: "",
+        author: "Stanford Online",
+        icon: "FaVideo",
+        form: "Video"
+    },
+    {
+        title: "Machine Learning for Everybody - Full Course",
+        link: "https://www.youtube.com/watch?v=i_LwzRVP7bg&t=3162s",
+        description: "This machine learning course covers the basics of ML in a very intuitive and beginner-friendly manner",
+        date: "Sep 26, 2022",
+        time_to_read: "4h",
+        author: "freeCodeCamp, Kylie Ying",
+        icon: "FaRegSmile",
+        form: "Video"
+    },
+    {
+        title: "Crash Course Artificial Intelligence",
+        link: "https://www.youtube.com/playlist?list=PL8dPuuaLjXtO65LeD2p4_Sb5XQ51par_b",
+        description: "This university-level course delves deep into the world of AI and its three primary Machine Learning facets: supervised, unsupervised, and reinforcement.",
+        date: "",
+        time_to_read: "",
+        author: "CrashCourse",
+        icon: "FaRobot",
+        form: "Video"
+    },
+    {
+        title: "Pytorch - Deep learning w/ Python",
+        link: "https://www.youtube.com/playlist?list=PLQVvvaa0QuDdeMyHEYc0gxFpYwHY2Qfdh",
+        description: "This comprehensive youtube course consisting of multiple videos covers many topics, essential for machine learning.",
+        date: "",
+        time_to_read: "",
+        author: "sentdex",
+        icon: "FaCode",
+        form: "Video"
+    },
+    {
+        title: "MIT Introduction to Machine Learning",
+        link: "https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI",
+        description: "This comprehensive course is available on YouTube and covers a wide range of topics.",
+        date: "",
+        time_to_read: "",
+        author: "MIT, Alexander Amini",
+        icon: "FaCamera",
+        form: "Video"
+    },
+    {
+        title: "A Course in Machine Learning",
+        link: "http://ciml.info/",
+        description: "Dive into the dynamic realm of machine learning with Hal Daumé III's comprehensive guide. This course offers a detailed overview of key concepts.",
+        date: "",
+        time_to_read: "",
+        author: "Hal Daumé III",
+        icon: "FaBook",
+        form: "Text"
     }
 ]
 
