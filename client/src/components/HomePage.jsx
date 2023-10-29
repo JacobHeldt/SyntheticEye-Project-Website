@@ -23,11 +23,11 @@ const HomePage = () => {
       <Divider />
 
       <div className='bg-primary '>
+        <FadingModels id="models" />
+        <Divider />
         <FadingProject id="project" />
         <Divider />
         <FadingAboutus id="aboutus" />
-        <Divider />
-        <FadingModels id="models" />
       </div>
     </div>
   );
