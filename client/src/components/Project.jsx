@@ -25,7 +25,6 @@ const Project = () => {
       <div className='flex justify-center text-center '>
         <div>
           <h1 className='font-righteous text-white md:text-6xl text-5xl tracking-wide mb-1 z-10'>The Project</h1>
-          <h3 className='text-gray-300 tracking-wide font-poppins font-light z-10'>What we want to achieve</h3>
         </div>
       </div>
 
@@ -49,7 +48,7 @@ const Project = () => {
           }}
         >
         <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight md:p-6 bg-gray-800 rounded-3xl p-4 text-white font-poppins flex items-center justify-center">
-        Our goal is to develop a comprehensive application that detects and distinguishes AI-generated content from human-generated content across various media formats, starting with images and expanding to video, text, and audio. Thus enabling anyone to recognize AI-generated content and combat the spread of misinformation in the digital world.
+        Our aim is to develop a reliable and user-friendly application that detects and distinguishes AI-generated content from human content across various media formats. Thus empowering everyone to identify AI-generated content and combat the spread of misinformation in the digital world.
         </div>
         </div>
       </div>
@@ -64,7 +63,7 @@ const Project = () => {
           }}
         >
         <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight md:p-6 bg-gray-800 rounded-3xl p-4 text-white font-poppins flex items-center justify-center">
-        We want to develop a user-friendly application, that gives everybody tools to detect AI-generated content. It will incorporate detection models and provide an intuitive experience for users, enabling them to make informed decisions.
+        We want to develop an application, that equips everybody with the tools needed to detect AI-generated content. It will incorporate detection models and provide an intuitive experience for users, enabling them to make informed decisions. Our commitment is to continuously enhance our models and user experience.
         </div>
         </div>
         <div 
