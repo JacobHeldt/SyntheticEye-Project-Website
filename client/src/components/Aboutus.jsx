@@ -65,7 +65,7 @@ const Aboutus = () => {
         >
         <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight bg-gray-800 rounded-3xl md:p-6 p-2 text-white font-poppins flex items-center justify-center">
         <span className='md:p-3 p-1'>
-          <span className='md:text-4xl text-lg font-bold font-poppins'>Noah Brömme</span><div className="md:h-3 h-0 mt-[-3px]"></div><span className='md:text-lg text-[0.75rem] md:leading-5 leading-[0rem]'>Hello! I have lived in NY for 9 years. I have found interest in technology and AI. I also play the piano and the guitar and I am amazed by the art of photography. With the rise of deepfakes and AI-generated content in our everyday lives, I found myself interested in these topics.</span>
+          <span className='md:text-4xl text-lg font-bold font-poppins'>Noah Brömme</span><div className="md:h-3 h-0 mt-[-3px]"></div><span className='md:text-lg text-[0.75rem] md:leading-5 leading-[0rem]'>I have lived in NY for 9 years. I have found interest in technology and AI. I also play the piano and the guitar and I am amazed by the art of photography. With the rise of deepfakes and AI-generated content in our everyday lives, I found myself interested in these topics.</span>
         </span>
         </div>
         </div>
@@ -81,7 +81,7 @@ const Aboutus = () => {
           >
           <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight  bg-gray-800 rounded-3xl md:p-6 p-2 text-white font-poppins flex items-center justify-center">
           <span className='p-1'>
-            <span className='md:text-4xl text-lg font-bold font-poppins'>Jacob Heldt</span><div className="md:h-3 h-0 md:mt-0 mt-[-3px]"></div><span className='md:text-lg text-[0.75rem] md:leading-5 leading-[0rem]'>Hello! After living in the Netherlands for 7 years, I now live in New York since 2 years and have developed passion for technology, creativity, and innovation. Machine Learning is a significant area of interest for me, and I am constantly striving to improve my understanding and expertise in this field. </span>
+            <span className='md:text-4xl text-lg font-bold font-poppins'>Jacob Heldt</span><div className="md:h-3 h-0 md:mt-0 mt-[-3px]"></div><span className='md:text-lg text-[0.75rem] md:leading-5 leading-[0rem]'>After living in the Netherlands for 6 years, I now live in New York and have developed passion for technology, creativity, and innovation. Machine Learning is a significant area of interest for me, and I want to improve my understanding and expertise in this field.</span>
           </span>
           </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { general_featured, general_standard } from '../constants/index.js';
 import * as Icons from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -13,9 +13,15 @@ const ContentLibrary = () => {
   const [touchEnd, setTouchEnd] = useState(0);
   const [clickable, setClickable] = useState(true);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+      setIsLoaded(true);
+  }, []);
+
   const scroll = (direction) => {
     // Determine the amount to scroll based on the window width
-    const scrollAmount = window.innerWidth <= 768 ? 302 : 515; // 300 for mobile and 600 for desktop
+    const scrollAmount = window.innerWidth <= 768 ? 302 : 544; // 300 for mobile and 600 for desktop
   
     if (sliderRef.current) {
       sliderRef.current.scrollBy({
@@ -71,7 +77,7 @@ const ContentLibrary = () => {
     </div>
         
     
-    <div className='md:mx-24 mx-8'>
+    <div className={`md:mx-24 mx-8 ${isLoaded ? 'fade-in' : ''}`}>
     <div className='w-full text-center text-white md:text-5xl text-3xl  mt-24 font-righteous'>SyntheticEye Content Library</div>
 
     <div className='flex justify-center mt-8 font-semibold'>
@@ -119,7 +125,7 @@ const ContentLibrary = () => {
                   <div className='relative flex flex-col p-6 md:w-[550px] w-72'>
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className='absolute top-12 left-8 right-8 md:text-xl text-lg whitespace-normal'>{item.title}</a>
                     <p className='absolute md:top-28 top-[135px] left-8 right-8 whitespace-normal text-gray-300 md:text-base text-sm'>{item.description}</p>
-                    <div className='absolute md:bottom-4 bottom-2 mb:mt-auto mt-3 left-8 w-16 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
+                    <div className='absolute md:bottom-4 bottom-2 mb:mt-auto mt-3 left-8 w-20 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
                     <a href={item.link} target="_blank" className='absolute right-4 md:bottom-4 md:top-[215px] top-80 text-black primary-gradient tracking-wider font-righteous py-1 text-lg uppercase rounded-md hover:rounded-lg px-6'>Learn More</a>
                   </div>
                 </div>
@@ -162,7 +168,7 @@ const ContentLibrary = () => {
 
                   <div className='relative flex flex-col p-6 md:h-[420px] h-[250px]'>
                   <div>
-                    <div className='absolute top-8 left-6 w-16 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
+                    <div className='absolute top-8 left-6 w-20 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
                       <div className="mt-14"> {/* Fixed margin-top to ensure the title always starts at the same line */}
                         <a href={item.link} target="_blank" rel="noopener noreferrer" className='text-lg whitespace-normal'>{item.title}</a>
                         <p className='whitespace-normal text-gray-300 top-44 absolute hidden md:block'>{item.description}</p>

@@ -4,8 +4,9 @@ import grainient2 from '../assets/grainient2.webp'
 import grainient3 from '../assets/grainient3.webp'
 
 const Project = () => {
+
   return (
-    <div className='font-poppins' id="project">
+    <div className="font-poppins" id="project">
              <div className='absolute right-1/3 z-[0] mt-[-50px]'>
         <div className='blue__gradient md:h-52 md:w-80 h-40 w-64'></div>
         </div>
@@ -63,7 +64,7 @@ const Project = () => {
           }}
         >
         <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight md:p-6 bg-gray-800 rounded-3xl p-4 text-white font-poppins flex items-center justify-center">
-        We want to develop an advanced and user-friendly application, that has the ability to easily detect AI-generated content. It will incorporate cutting-edge detection models and provide a seamless experience for users, enabling them to make informed decisions.
+        We want to develop a user-friendly application, that gives everybody tools to detect AI-generated content. It will incorporate detection models and provide an intuitive experience for users, enabling them to make informed decisions.
         </div>
         </div>
         <div 
@@ -101,7 +102,7 @@ const Project = () => {
           }}
         >
         <div className="z-10 h-full w-full md:text-lg text-sm md:tracking-wide tracking-tight  bg-gray-800 rounded-3xl md:p-6 p-4 text-white font-poppins flex items-center justify-center">
-        Specialized models are built for images, videos, text, and audio using machine learning and deep learning methods. Diverse datasets are acquired and utilized to train the detection models, enhancing their accuracy and reliability.
+        Specialized models are built for the detection of images, videos, text, and audio using machine learning. Large datasets are utilized to train the detection models, enhancing their reliability.
         </div>
         </div>
       </div>

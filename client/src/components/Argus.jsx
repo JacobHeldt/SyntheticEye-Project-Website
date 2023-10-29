@@ -4,8 +4,9 @@ import Navbar from './Navbar';
 import { DotLoader, RingLoader } from "react-spinners";
 import { AiFillCheckCircle } from 'react-icons/ai';
 import FaceDetectors from './FaceDetectors';
+import ImageDetectors from './ImageDetectors';
 
-const Aletheia = () => {
+const Argus = () => {
     const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     const fileInput = useRef(null);
@@ -15,10 +16,11 @@ const Aletheia = () => {
 
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const [imageSrc, setImageSrc] = useState(null);
+
     useEffect(() => {
         setIsLoaded(true);
     }, []);
-
 
     const handleSubmit = async () => {
         const selectedFile = fileInput.current?.files[0];
@@ -50,7 +52,7 @@ const Aletheia = () => {
             if (process.env.NODE_ENV === "development") {
                 data = await mockServerResponse();
             } else {
-                const response = await fetch('https://syntheticeye-dev.onrender.com/predict', {
+                const response = await fetch('https://syntheticeye-dev.onrender.com/predict-argus', {
                     method: 'POST',
                     mode: 'cors',
                     body: formData,
@@ -72,11 +74,11 @@ const Aletheia = () => {
 
     const getCategoryFromProbability = (probability) => {
         console.log('Probability:', probability);
-        if (probability < 0.1) return { label: "Likely AI-Generated", color: "red" };
-        else if (probability < 0.2) return { label: "Possibly AI-Generated", color: "light-red" };
-        else if (probability < 0.5) return { label: "Unsure", color: "yellow" };
-        else if (probability < 0.7) return { label: "Probably Real", color: "light-green" };
-        else if (probability < 1.01) return { label: "Likely Real", color: "green" };
+        if (probability < 0.15) return { label: "Likely AI-Generated", color: "red" };
+        else if (probability < 0.35) return { label: "Possibly AI-Generated", color: "light-red" };
+        else if (probability < 0.55) return { label: "Unsure", color: "yellow" };
+        else if (probability < 0.8) return { label: "Probably Real", color: "light-green" };
+        else if (probability < 1) return { label: "Likely Real", color: "green" };
         else return { label: "Debug", color: "green" };
         // return { label: "Probably AI-Generated", color: "light-red" };
     }
@@ -89,7 +91,7 @@ const Aletheia = () => {
                     // This is where you mock the probability value
                     probability: Math.random() // This will return a random value between 0 and 1
                 });
-            }, 2000);
+            }, 800);
         });
     }
 
@@ -106,6 +108,14 @@ const Aletheia = () => {
         setIsFileHovering(false);
     };
 
+    useEffect(() => {
+        return () => {
+            if (imageSrc) {
+                URL.revokeObjectURL(imageSrc);
+            }
+        };
+    }, [imageSrc]);
+
     function triggerFileInput(e) {
         e.stopPropagation();
         fileInput.current.click();
@@ -114,8 +124,12 @@ const Aletheia = () => {
 
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            const imageURL = URL.createObjectURL(file);
+            setImageSrc(imageURL);
             setFileSelected(true);
         } else {
+            setImageSrc(null);
             setFileSelected(false);
         }
     };
@@ -127,13 +141,11 @@ const Aletheia = () => {
         <Navbar />
 
         <div className={`text-center font-poppins mt-2 ${isLoaded ? 'fade-in' : ''}`}>
-                <div className='text-white md:text-8xl text-5xl pt-16 pb-2 font-white font-righteous'>Aletheia</div>
-                <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>AI-GENERATED FACE DETECTION</div>
+                <div className='text-white md:text-8xl text-5xl pt-16 pb-2 font-white font-righteous'>Argus</div>
+                <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>General AI-Image Detection <span className='text-gray-300'>- Beta Version</span></div>
 
                 <div className="flex items-center justify-center">
-                <div className="text-gray-300 text-sm w-5/6 md:w-4/6 text-center mb-4 md:text-sm">
-                    Aletheia, named after the Greek goddess of truth, is our AI model that differentiates real human faces from AI-generated ones using advanced machine learning.
-                </div>
+
         </div>
 
         <div className='absolute right-2/3 z-[0]'>
@@ -146,18 +158,18 @@ const Aletheia = () => {
 
         <div className='flex md:flex-row flex-col justify-center items-start mt-6 md:mx-24 mx-4'>
 
-        <div className='md:w-1/2 md:mr-12 mb-6'> 
-                    <div className='iframe-container glow-video md:rounded-3xl rounded-lg'>
-                        <iframe src="https://player.vimeo.com/video/859624153?h=05cfed9838" width="100%" height="440" className='primary-border-2' allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+        <div className='md:w-1/2 md:mr-24 mb-6'> 
+                <div className="text-gray-300 text-base w-full md:w-full text-center mb-4 md:text-base">
+                Argus, named after the mythological giant with a hundred eyes, is our AI model capable of distinguishing between authentic and AI-generated images.
+                </div>
                     <div className='bg-gray-700 text-white mt-12 md:mt-0 mx-[-20px] md:p-0 p-4 only-mobile'>Our AI-generated face detection model is currently optimized for desktop use only. For full functionality, please access our site on a computer.</div>
-                    <h3 className='text-white text-lg mb-2 mt-8'>Aletheia can detect: </h3>
+                    <h3 className='text-white text-lg mb-6 mt-8'>Argus can detect: </h3>
                     
-                    <FaceDetectors/>
+                    <ImageDetectors/>
                     
                 </div>
                 
-                <div className='md:w-1/2 right-column'>
+                <div className='md:w-2/3 right-column'>
                 <div className="relative">
 
                 <div 
@@ -171,7 +183,7 @@ const Aletheia = () => {
                         setIsFileHovering(false);
                     }}
                     onDrop={handleFileDrop}
-                    className={`h-64 md:py-16 py-6 px-16 border-secondary ${fileSelected ? 'opacity-100' : 'opacity-70'} file_border_radius text-center cursor-pointer ${isFileHovering ? 'bg-gray-800' : ''} hover:bg-gray-800 text-white flex items-center justify-center overflow-hidden`}
+                    className={`h-[272px] md:py-16 py-6 px-16 border-secondary ${fileSelected ? 'opacity-100' : 'opacity-70'} file_border_radius text-center cursor-pointer ${isFileHovering ? 'bg-gray-800' : ''} hover:bg-gray-800 text-white flex items-center justify-center overflow-hidden`}
                 >
                     <input 
                         type="file" 
@@ -180,10 +192,11 @@ const Aletheia = () => {
                         ref={fileInput} 
                         onChange={handleFileChange}
                     />
+
                     <div className={`${fileSelected ? 'opacity-90' : 'opacity-90'} flex items-center justify-center h-full w-full text-lg`}>
                         {
                             fileSelected 
-                            ? <AiFillCheckCircle size={32} />
+                            ? imageSrc && <img src={imageSrc} alt="Uploaded Preview" className="uploaded-image-height-fill" />
                             : "Click or drop file here to upload"
                         }
                     </div>
@@ -217,12 +230,12 @@ const Aletheia = () => {
                             <div className='overlayStyle backdrop-blur text-white'>
                                 <div className='containerStyle'>
                                     <DotLoader color={"#32ffd6"} size={80} />
-                                    <p className='loading_text mt-12 text-lg'>Aletheia is thinking...</p>
+                                    <p className='loading_text mt-12 text-lg'>Argus is thinking...</p>
                                 </div>
                             </div>
                         )}
 
-                        <div className='text-gray-300 mb-2'>Aletheia classifies this image as:</div>
+                        <div className='text-gray-300 mb-2'>Argus classifies this image as:</div>
                         {result && (
                             <div className="flex items-center justify-center font-righteous mb-4">
                                 <div className={`circle-${getCategoryFromProbability(result.probability).color} md:text-lg text-md`}>
@@ -237,76 +250,28 @@ const Aletheia = () => {
                     </div>
                 </div>
                 
-                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-50 text-gray-200 text-center p-4 text-sm">
-                    <b>Warning:</b> Although this model has archieved a high accuracy on mutlitple generators, please be mindful that its predictions may not always be correct.
+                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-70 text-gray-200 text-center p-4 text-base">
+                    <b>Warning:</b> This model is still in beta and may give inaccurate predictions
                     </div>
 
                     <div className='text-gray-300 py-14 w-full bg-gray-50 bg-opacity-10'>
-                        <h1 className='text-lg mb-4'>Aletheia was trained on images from the following sources:</h1>
+                        <h1 className='text-lg mb-4'>Argus was trained on images from the following sources:</h1>
                         <div className='md:mx-56 mx-2 text-sm'>
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-3">The Synthetic Faces High Quality (SFHQ) part 3.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-1">The Synthetic Faces High Quality (SFHQ) part 1.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/bwandowando/faces-dataset-using-stable-diffusion-v14">Face Dataset Using Stable Diffusion v.1.4</a> <br /><br />
-                        <a target='blank' className='underline' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/sbaghbidi/human-faces-object-detection?select=images">Human Faces (Object Detection) from kaggle</a> <br /><br />
-                        <a target='blank' className='underline' href='https://www.kaggle.com/datasets/vbookshelf/art-by-ai-neural-style-transfer'>Art by Ai - Neural Style Transfer</a> <br /> <br />
-                        <a target='blank' className='underline' href='https://synthesis.ai/diverse-human-faces-dataset/'>Open Dataset for ML Training: Diverse Human Faces</a> <br /> <br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br /> 
+                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images">CIFAKE: Real and AI-Generated Synthetic Images</a> <br /><br />
+                        <a target='blank' className='underline' href="https://huggingface.co/datasets/dalle-mini/open-images">Dalle-Mini Open-Images</a> <br /><br />
+                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/superpotato9/dalle-recognition-dataset">dalle recognition dataset</a> <br /><br />
+                        <a target='blank' className='underline' href="https://www.bing.com/create">Bing Image Creator</a> <br /><br />
+                        <a target='blank' className='underline' href="https://lexica.art/">Lexica</a> <br /><br />
+                        <a target='blank' className='underline' href="https://www.craiyon.com/">Craiyon</a> <br /><br />
 
 
-                        <p>
-                            CelebA: Liu, Ziwei; Luo, Ping; Wang, Xiaogang; Tang, Xiaoou. (2015). 
-                            <i> Deep Learning Face Attributes in the Wild</i>. 
-                            Proceedings of International Conference on Computer Vision (ICCV), December 2015.
-                            [<a target='blank' href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" rel="noopener noreferrer">Link</a>]
-                        </p><br />
-                        <p>
-                            Bae, Gwangbin; de La Gorce, Martin; Baltrušaitis, Tadas; Hewitt, Charlie; Chen, Dong; 
-                            Valentin, Julien; Cipolla, Roberto; Shen, Jingjing. (2023). 
-                            <i> DigiFace-1M: 1 Million Digital Face Images for Face Recognition</i>. 
-                            2023 IEEE Winter Conference on Applications of Computer Vision (WACV), IEEE.
-                            [<a target='blank' href="https://microsoft.github.io/DigiFace1M/">Link</a>]
-                        </p><br />
-                        <p>
-                            Gary B. Huang, Manu Ramesh, Tamara Berg, Erik Learned-Miller. (2007). 
-                            <i>Labeled Faces in the Wild: A Database for Studying Face Recognition in Unconstrained Environments</i>. 
-                            University of Massachusetts, Amherst, Technical Report 07-49. [<a target='blank' href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>]
-                        </p> <br />
-                        <div className="citation">
-                            <a target='https://www.cs.columbia.edu/CAVE/databases/pubfig/'>Pubfig:   </a>
-                            N. Kumar, A. C. Berg, P. N. Belhumeur, and S. K. Nayar, 
-                            <i>"Attribute and Simile Classifiers for Face Verification,"</i> 
-                            in Proceedings of the International Conference on Computer Vision (ICCV), 2009.
-                        </div> <br />
-
-                        
-                        <p>
-                            <a href='https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/'>IMDB-Wiki Dataset: </a>Rothe, Rasmus; Timofte, Radu; Van Gool, Luc. (2018). 
-                            <i>Deep expectation of real and apparent age from a single image without facial landmarks</i>. 
-                            International Journal of Computer Vision, Volume 126, Issue 2-4, pp. 144–157, Springer.
-                            [<a target='blank' href="#" rel="noopener noreferrer">Link</a>]
+                        <p className="">
+                        Large-Scale Prompt Gallery Dataset for Text-to-Image Generative Models: Wang, Zijie J.; Montoya, Evan; Munechika, David; Yang, Haoyang; Hoover, Benjamin; Chau, Duen Horng. (2022). 
+                        <i>arXiv:2210.14896 [cs]</i>. 
+                        [<a target='_blank' href="https://arxiv.org/abs/2210.14896" rel="noopener noreferrer">Link</a>]
                         </p>
-
-                        <p>
-                            Rothe, Rasmus; Timofte, Radu; Van Gool, Luc. (2015). 
-                            <i>DEX: Deep EXpectation of apparent age from a single image</i>. 
-                            Proceedings of the IEEE International Conference on Computer Vision Workshops (ICCVW), December 2015.
-                            [<a target='blank' href="#" rel="noopener noreferrer">Link</a>]
-                        </p><br />
-
-                        <p>
-                            Zhang, Zhifei; Song, Yang; Qi, Hairong. (2017). 
-                            <i>Age Progression/Regression by Conditional Adversarial Autoencoder</i>. 
-                            IEEE Conference on Computer Vision and Pattern Recognition (CVPR), IEEE.
-                            [<a target='blank' href="https://susanqq.github.io/UTKFace/" rel="noopener noreferrer">Link</a>]
-                        </p><br />
-
-                        <p>We generated images ourselves using <a href='https://www.bing.com/create'>Bing image creator</a></p> <br />
-
-                        <p>Images from <a href='https://lexica.art/'>Lexica</a></p>
+                        <br />
+                        
 
                         </div>
                     </div>
@@ -321,4 +286,4 @@ const Aletheia = () => {
     );
 }
 
-export default Aletheia;
+export default Argus;

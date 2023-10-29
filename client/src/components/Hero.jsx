@@ -39,15 +39,15 @@ const Hero = () => {
       <div>
         
       </div>
-      <h2 className='font-secondary md:text-3xl font-poppins md:mb-4 z-20 relative text-lg mb-8'>Advanced AI Detector</h2>      
+      <h2 className='font-secondary md:text-3xl font-poppins md:mb-4 z-20 relative text-lg mb-8'>Advanced AI Detectors</h2>      
       <h1 className='z-20 relative text-white md:text-9xl font-righteous md:mb-4 text-5xl mb-8'>SyntheticEye</h1>
       <p className='text-white font-light relative z-20 text-xs md:text-base'>Created by Jacob Heldt and Noah Brömme</p>
     </div>
 
     <img 
       src={`${herobg}`}
-      alt="Descriptive alt text" 
-      className="absolute z-10 md:right-36 md:-top-0 md:mt-28 md:opacity-60 mt-[-180px] opacity-40 md:h-[350px] md:w-[470px] w-[350px] h-[175px] md:visible invisible" 
+      alt="SyntheticEye Logo" 
+      className="absolute z-10 md:right-36 md:-top-0 md:mt-4 md:opacity-60 mt-[-180px] opacity-40 md:h-[350px] md:w-[470px] w-[350px] h-[175px] md:visible invisible" 
   />
 
       <Button handleClick={handleOpenPopup} text="Try it!" className=""/>

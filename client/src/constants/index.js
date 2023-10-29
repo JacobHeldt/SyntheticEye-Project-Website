@@ -37,6 +37,10 @@ export const navLinks = [
         title: "Face Detection"
     },
     {
+        id: "argus",
+        title: "Image Detection  (beta)"
+    },
+    {
         id: "content-library-general",
         title: "Content Library"
     },
@@ -89,7 +93,7 @@ export const general_featured = [
         author: "Proofed",
         icon: "FaGlasses",
         form: "Article"
-    }
+    },
 ]
 export const general_standard = [
     {
@@ -113,6 +117,13 @@ export const general_standard = [
         form: "Article"
     },
     {
+        title: "The carbon impact of artificial intelligence",
+        link: "https://www.nature.com/articles/s42256-020-0219-9",
+        description: "AI has a significant carbon footprint due to its energy-intensive nature, raising concerns and prompting shifts towards more sustainable practices.", 
+        icon: "FaLeaf",
+        form: "Article"
+    },
+    {
         title: "Ethical concerns mount as AI takes bigger decision-making role",
         link: "https://news.harvard.edu/gazette/story/2020/10/ethical-concerns-mount-as-ai-takes-bigger-decision-making-role/",
         description: "AI has many benefits and risks for society. Experts debate how to regulate and use it ethically.",
@@ -133,6 +144,13 @@ export const general_standard = [
         form: "Video"
     },
     {
+        title: "Artificial Intelligence’s Environmental Costs and Promise",
+        link: "https://www.cfr.org/blog/artificial-intelligences-environmental-costs-and-promise",
+        description: "AI is viewed as a means to combat climate change, but tech companies must act to ensure it doesn’t contribute to environmental degradation.",
+        icon: "FaLeaf",
+        form: "Article"
+    },
+    {
         title: "If it wasn’t created by a human artist, is it still art?",
         link: "https://news.harvard.edu/gazette/story/2023/08/is-art-generated-by-artificial-intelligence-real-art/",
         description: "Harvard faculty from different arts fields share their views on AI as a threat, collaborator, or tool.",
@@ -141,7 +159,49 @@ export const general_standard = [
         author: "The Harvard Gazette, Liz Mineo",
         icon: "FaPaintBrush",
         form: "Article"
-    }
+    },
+    {
+        title: "How artificial intelligence is helping tackle environmental challenges",
+        link: "https://www.unep.org/news-and-stories/story/how-artificial-intelligence-helping-tackle-environmental-challenges",
+        description: "Accessing, interpreting, and acting on the abundant climate data is crucial for managing environmental crises, and AI is central to this process.",
+        icon: "FaLeaf",
+        form: "Article"
+    },
+    {
+        title: "What is AI ethics?",
+        link: "https://www.ibm.com/topics/ai-ethics",
+        description: "AI ethics focuses on ensuring fairness, transparency, and responsible use of AI technologies, with companies like IBM adopting guidelines.",
+        icon: "FaBalanceScaleLeft",
+        form: "Article"
+    },
+    {
+        title: "New York Times Artificial Intelligence Library",
+        link: "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics",
+        description: "Library of multiple New York Times articles about Artificial Intelligence.",
+        icon: "FaRobot",
+        form: "Collection"
+    },
+    {
+        title: "Ethics of Artificial Intelligence",
+        link: "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics",
+        description: "With its unique mandate, UNESCO has led the international effort to ensure that science and technology develop with strong ethical guardrails for decades.",
+        icon: "FaBalanceScaleLeft",
+        form: "Article"
+    },
+    {
+        title: "We Need to Talk About How Good A.I. Is Getting",
+        link: "https://www.nytimes.com/2022/08/24/technology/ai-technology-progress.html",
+        description: "We’re in a golden age of progress in artificial intelligence. It’s time to start taking its potential and risks seriously.",
+        icon: "FaRobot",
+        form: "Article"
+    },
+    {
+        title: "Who will benefit from AI? ",
+        link: "https://news.mit.edu/2023/who-will-benefit-ai-machine-usefulness-0929",
+        description: "In a talk, Daron Acemoglu offers vision of \“machine usefulness,\” rather than autonomous “intelligence,” to help workers and spread prosperity.",
+        icon: "FaUserAlt",
+        form: "Article"
+    },
 ]
 
 
@@ -350,7 +410,7 @@ export const about = [
     {
         id: "jacob",
         title: "Jacob Heldt",
-        content: "Hello! After living in the Netherlands for 7 years, I now live in New York since 2 years and have developed passion for technology, creativity, and innovation. Machine Learning is a significant area of interest for me, and I am constantly striving to improve my understanding and expertise in this field. ",
+        content: "Hello! After living in the Netherlands for 6 years, I now live in New York since 2 years and have developed passion for technology, creativity, and innovation. Machine Learning is a significant area of interest for me, and I am constantly striving to improve my understanding and expertise in this field. ",
         personimg: noahimg
     }
 ]

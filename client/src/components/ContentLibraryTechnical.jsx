@@ -73,8 +73,8 @@ const ContentLibraryTechnical = () => {
       </div>
           
       
-      <div className='md:mx-24 mx-8'>
-      <div className='w-full text-center text-white md:text-5xl text-3xl  mt-24 font-righteous'>SyntheticEye Content Library</div>
+      <div className='lg:mx-24 mx-8'>
+      <div className='w-full text-center text-white lg:text-5xl text-3xl  mt-24 font-righteous'>SyntheticEye Content Library</div>
       <div className='flex justify-center mt-8 font-semibold'>
 
         <Link to="/content-library-general" className='z-50'>
@@ -90,40 +90,40 @@ const ContentLibraryTechnical = () => {
         </Link> 
 
     </div>
-      <div className='text-center md:mx-36 mx-8 text-gray-300 mt-8 md:text-base text-sm'><span className='md:inline hidden'>Explore our curated collection of insightful articles and resources on AI-generated content and the latest in machine learning advancements. </span>Dive deep into the transformative world of artificial intelligence and stay informed with our handpicked selections.</div>
-      <h2 className='md:text-4xl text-2xl text-white font-righteous mb-6 md:mt-4 mt-12'>Featured</h2>
+      <div className='text-center lg:mx-36 mx-8 text-gray-300 mt-8 lg:text-base text-sm'><span className='lg:inline hidden'>Explore our curated collection of insightful articles and resources on AI-generated content and the latest in machine learning advancements. </span>Dive deep into the transformative world of artificial intelligence and stay informed with our handpicked selections.</div>
+      <h2 className='lg:text-4xl text-2xl text-white font-righteous mb-6 lg:mt-4 mt-12'>Featured</h2>
       <div className="relative mobile-btn-container">
   
       <button 
-            className='md:mb-0 mb-5 flex justify-center items-center mobile-btn mobile-btn-back py-2 md:py-0 md:w-auto w-[100%] px-2 md:px-4 md:absolute md:left-0 md:top-0 md:bottom-0 text-black primary-gradient tracking-wider font-righteous md:h-[270px] text-lg uppercase rounded-md hover:rounded-lg' 
+            className='lg:mb-0 mb-5 flex justify-center items-center mobile-btn mobile-btn-back py-2 lg:py-0 lg:w-auto w-[100%] px-2 lg:px-4 lg:absolute lg:left-0 lg:top-0 lg:bottom-0 text-black primary-gradient tracking-wider font-righteous lg:h-[270px] text-lg uppercase rounded-md hover:rounded-lg' 
             onClick={() => scroll('back')}
         >
             <FaArrowLeft />
         </button>
           
           {/* Slider Content */}
-          <div ref={sliderRef} className="slider sm:order-1 md:mx-16 mx-0" onTouchStart={handleTouchStart}
+          <div ref={sliderRef} className="slider sm:order-1 lg:mx-16 mx-0" onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}>
             {technical_featured.map(item => (
-              <div key={item.title} className="text-white md:h-[270px] h-[455px] md:w-1/2 w-72 bg-gray-700 md:mb-10 mb-0 article rounded-xl">
+              <div key={item.title} className="text-white lg:h-[270px] h-[455px] lg:w-1/2 w-72 bg-gray-700 lg:mb-10 mb-0 article rounded-xl">
                 <div 
-                  className="h-full rounded-xl md:w-auto w-[100%]"
+                  className="h-full rounded-xl lg:w-auto w-[100%]"
                   style={{ 
                     background: 'linear-gradient(to right, #33F5FF, #32ffd6, #33FF9C)', 
                     padding: '0.1rem',
                   }}
                 >
-                  <div className='bg-gray-800 h-full md:w-[540px] w-72 rounded-xl flex flex-col md:flex-row'> {/* Adjusted here */}
-                    <div className='bg-quote-gradient flex items-center justify-center md:w-1/4 w-72 rounded-t-xl md:rounded-l-xl md:h-auto h-20'> 
+                  <div className='bg-gray-800 h-full lg:w-[540px] w-72 rounded-xl flex flex-col lg:flex-row'> {/* Adjusted here */}
+                    <div className='bg-quote-gradient flex items-center justify-center lg:w-1/4 w-72 rounded-t-xl lg:rounded-l-xl lg:h-auto h-20'> 
                       {renderIcon(item.icon)}
                     </div>
   
-                    <div className='relative flex flex-col p-6 md:w-[550px] w-72'>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className='absolute top-12 left-8 right-8 md:text-xl text-lg whitespace-normal'>{item.title}</a>
-                      <p className='absolute md:top-28 top-[135px] left-8 right-8 whitespace-normal text-gray-300 md:text-base text-sm'>{item.description}</p>
-                      <div className='absolute md:bottom-4 bottom-2 mb:mt-auto mt-3 left-8 w-16 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
-                      <a href={item.link} target="_blank" className='absolute right-4 md:bottom-4 md:top-[215px] top-80 text-black primary-gradient tracking-wider font-righteous py-1 text-lg uppercase rounded-md hover:rounded-lg px-6'>Learn More</a>
+                    <div className='relative flex flex-col p-6 lg:w-[550px] w-72'>
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className='absolute top-12 left-8 right-8 lg:text-xl text-lg whitespace-normal'>{item.title}</a>
+                      <p className='absolute lg:top-28 top-[135px] left-8 right-8 whitespace-normal text-gray-300 lg:text-base text-sm'>{item.description}</p>
+                      <div className='absolute lg:bottom-4 bottom-2 mb:mt-auto mt-3 left-8 w-16 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
+                      <a href={item.link} target="_blank" className='absolute right-4 lg:bottom-4 lg:top-[215px] top-80 text-black primary-gradient tracking-wider font-righteous py-1 text-lg uppercase rounded-md hover:rounded-lg px-6'>Learn More</a>
                     </div>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ const ContentLibraryTechnical = () => {
     
           {/* Next Button */}
           <button 
-            className='md:mt-0 mt-5 flex justify-center items-center mobile-btn mobile-btn-next md:py-0 md:w-auto w-[100%] py-2 px-2 md:px-4 md:absolute md:right-0 md:top-0 md:bottom-0 text-black primary-gradient tracking-wider font-righteous md:h-[270px] text-lg uppercase rounded-md hover:rounded-lg' 
+            className='lg:mt-0 mt-5 flex justify-center items-center mobile-btn mobile-btn-next lg:py-0 lg:w-auto w-[100%] py-2 px-2 lg:px-4 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 text-black primary-gradient tracking-wider font-righteous lg:h-[270px] text-lg uppercase rounded-md hover:rounded-lg' 
             onClick={() => scroll('next')}
         >
             <FaArrowRight />
@@ -143,16 +143,16 @@ const ContentLibraryTechnical = () => {
       </div>
   
   
-      <div className='md:mx-24 mx-8'>
-      <h2 className='md:text-4xl text-2xl text-white font-righteous mb-6 md:mt-4 mt-16'>Our handpicked content</h2>
+      <div className='lg:mx-24 mx-8'>
+      <h2 className='lg:text-4xl text-2xl text-white font-righteous mb-6 lg:mt-4 mt-16'>Our handpicked content</h2>
       <div className="relative">
           
           {/* Slider Content */}
-          <div className="grid md:grid-cols-4 grid-cols-1 gap-4 items-center w-full">
+          <div className="grid lg:grid-cols-4 grid-cols-1 gap-4 items-center w-full">
             {technical_standard.map(item => (
               <div key={item.title} className="text-white bg-gray-700 mb-10 article rounded-xl">
                 <div 
-                  className="rounded-xl md:w-[20vw] w-full mx-auto"
+                  className="rounded-xl lg:w-[20vw] w-full mx-auto"
                   style={{ 
                     background: 'linear-gradient(to right, #33F5FF, #32ffd6, #33FF9C)', 
                     padding: '0.1rem',
@@ -163,12 +163,12 @@ const ContentLibraryTechnical = () => {
                       {renderIcon(item.icon)}
                     </div>
   
-                    <div className='relative flex flex-col p-6 md:h-[420px] h-[250px]'>
+                    <div className='relative flex flex-col p-6 lg:h-[420px] h-[250px]'>
                     <div>
                       <div className='absolute top-8 left-6 w-16 py-1 text-center text-sm bg-white text-black rounded-lg'>{item.form}</div>
                         <div className="mt-14"> {/* Fixed margin-top to ensure the title always starts at the same line */}
                           <a href={item.link} target="_blank" rel="noopener noreferrer" className='text-lg whitespace-normal'>{item.title}</a>
-                          <p className='whitespace-normal text-gray-300 top-44 absolute hidden md:block'>{item.description}</p>
+                          <p className='whitespace-normal text-gray-300 top-44 absolute hidden lg:block'>{item.description}</p>
                         </div>
                     </div>
                     <a href={item.link} target="_blank" className='absolute bottom-8 px-6 text-black primary-gradient tracking-wider font-righteous py-1 text-lg uppercase rounded-md hover:rounded-lg'>Learn More</a>
