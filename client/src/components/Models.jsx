@@ -52,21 +52,28 @@ const Models = () => {
       {/* Face Detector */}
 
 
-      <div className='md:ml-36 md:mr-36 ml-8 mr-8 mt-12 flex flex-row justify-center space-x-8'>
+      <div className='md:ml-36 md:mr-36 ml-8 mr-8 mt-12 flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8'>
       <div 
-          className="md:h-[540px] h-48 w-1/3 md:rounded-3xl rounded-tl-3xl rounded-tr-3xl z-50"
+          className="md:h-[540px] h-[540px] md:w-1/3 w-1/1 rounded-3xl z-50"
           style={{ 
             background: 'linear-gradient(to right, #33FF9C, #32ffd6, #33F5FF)', 
             padding: '0.1rem',
           }}
         >
-        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 md:rounded-3xl rounded-tr-3xl rounded-tl-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
+        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 rounded-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
         <img src={aletheia} className='h-36'></img>
         <div>
         <div className='w-full text-center text-4xl mt-4 text-white'>Aletheia</div>
         <div className='w-full text-center text-xl font-secondary'>AI-Face Detector</div>
-        <div className='font-light text-base mt-2 text-white mb-6'>Aletheia, named after the Greek goddess of truth, is our AI model that differentiates real human faces from AI-generated ones using advanced machine learning techniques.</div>
-        <Button handleClick={handleOpenPopupAletheia} text="Try it" style={{ zIndex: 5000 }} className="text-black"/>
+        <div className='font-light text-base mt-2 text-white mb-6 text-center md:text-left'>Aletheia, named after the Greek goddess of truth, is our AI model that differentiates real human faces from AI-generated ones using advanced machine learning techniques.</div>
+        <div className='w-full flex justify-center'>
+            <Button 
+                handleClick={handleOpenPopupAletheia} 
+                text="Try it" 
+                style={{ zIndex: 5000 }} 
+                className="text-black"
+            />
+        </div>
         </div>
         </div>
         </div>
@@ -74,38 +81,47 @@ const Models = () => {
 
 
         <div 
-          className="md:h-[540px] h-48 w-1/3 md:rounded-3xl rounded-tl-3xl rounded-tr-3xl z-50"
+          className="md:h-[540px] h-[540px] md:w-1/3 w-1/1 rounded-3xl z-50"
           style={{ 
             background: 'linear-gradient(to right, #33FF9C, #32ffd6, #33F5FF)', 
             padding: '0.1rem',
           }}
         >
-        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 md:rounded-3xl rounded-tr-3xl rounded-tl-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
+        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 rounded-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
         <img src={argus} className='h-36'></img>
         <div>
         <div className='w-full text-center text-4xl mt-4 text-white'>Argus</div>
         <div className='w-full text-center text-xl font-secondary'>AI-Image Detector</div>
         <div className='font-light text-base mt-2 text-white mb-6'>Argus, named after the all-seeing giant from Greek mythology, is our AI model that identifies various types of AI-generated images using cutting-edge machine learning.</div>
-        <Button handleClick={handleOpenPopupArgus} text="Try it" style={{ zIndex: 5000 }} className="text-black"/>
+        <div className='w-full flex justify-center'>
+            <Button 
+                handleClick={handleOpenPopupAletheia} 
+                text="Try it" 
+                style={{ zIndex: 5000 }} 
+                className="text-black"
+            />
+        </div>
         </div>
         </div>
         </div>
 
         <div 
-          className="md:h-[540px] h-48 w-1/3 md:rounded-3xl rounded-tl-3xl rounded-tr-3xl z-50"
+          className="md:h-[540px] h-[540px] md:w-1/3 w-1/1 rounded-3xl z-50"
           style={{ 
             background: 'linear-gradient(to right, #33FF9C, #32ffd6, #33F5FF)', 
             padding: '0.1rem',
           }}
         >
-        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 md:rounded-3xl rounded-tr-3xl rounded-tl-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
+        <div className="h-full w-full md:text-lg text-base tracking-wide bg-gray-800 rounded-3xl md:p-8 p-4 font-poppins items-center justify-center flex flex-col">
         <img src={hermes} className='h-36'></img>
         <div>
         <div className='w-full text-center text-4xl mt-4 text-white'>Hermes</div>
         <div className='w-full text-center text-xl font-secondary'>AI-Text Detector</div>
         <div className='font-light text-base mt-2 text-white mb-6'>Hermes, inspired by the Greek messenger god of speed and communication, is our AI model for distinguishing genuine human-written text from AI-generated content using machine learning.</div>
-        <div className='primary-gradient tracking-wider font-righteous  md:px-9 md:py-2 text-lg z-50 uppercase rounded-md hover:rounded-lg w-52 py-1 text-balck opacity-70'>
+        <div className='w-full flex justify-center'>
+        <div className='primary-gradient tracking-wider font-righteous  md:px-9 md:py-2 text-lg z-50 uppercase rounded-md hover:rounded-lg w-52 py-1 text-balck opacity-70 text-center'>
           In Progress
+        </div>
         </div>
         </div>
         </div>

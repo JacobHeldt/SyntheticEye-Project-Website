@@ -1,5 +1,5 @@
-import React from 'react'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {React, useEffect} from 'react'
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Aboutus, Button, Hero, Imgslider, Models, Navbar, Personimg, Persontext, Project, ProjectCard, ProjectText, Quote, Teamcard, Divider } from './components'
 import HomePage from './components/HomePage';
 import Aletheia from './components/Aletheia';
@@ -8,9 +8,25 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import ContentLibrary from './components/ContentLibrary';
 import ContentLibraryTechnical from './components/ContentLibraryTechnical';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto" // instant scroll
+      });
+    }, 1);
+  }, [pathname]);
+
+  return null;
+}
+
 const App = () => {
   return (
     <Router>
+        <ScrollToTop />
         <div className='bg-primary w-full overflow-hidden'>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -25,4 +41,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

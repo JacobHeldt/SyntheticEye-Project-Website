@@ -103,7 +103,7 @@ const Aboutus = () => {
 
 
 
-      <div className='z-10 w-full h-12 primary-gradient flex items-center justify-center text-center font-extralight font-poppins mt-20'>
+      <div className='z-10 w-full h-12 primary-gradient flex items-center justify-center text-center font-poppins mt-20'>
           <span className=' z-10 uppercase md:mr-12 mr-1 md:tracking-widest tracking-tight md:text-base text-xs'>SyntheticEye</span><a href="https://www.linkedin.com/groups/12854518/" className='text-gray-600 md:mr-12 mr-4 z-10 md:text-base text-xs'>Our LinkedIn Group</a><a href="https://www.linkedin.com/in/jacob-heldt-92559327a/" className='text-gray-600 md:mr-12 mr-4 md:text-base text-xs z-50'>Jacob on LinkedIn</a><a href="https://www.linkedin.com/in/noah-br%C3%B6mme-63b90827a/" className='text-gray-600 md:text-base text-xs md:mr-12 mr-4'>Noah on LinkedIn</a><a href="https://github.com/JacobHeldt/SyntheticEye" className='text-gray-600 md:text-base text-xs'>GitHub Repo</a>
       </div>
 
