@@ -6,7 +6,7 @@ import herobg from '../assets/herobg.png'
 import Popup from './Popup'
 import { useNavigate } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = ({ handleClick }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,6 +19,10 @@ const Hero = () => {
   const handleClosePopup = () => {
     setIsOpen(false);
   };
+
+  const handleButtonClick = () => {
+    window.open("https://chrome.google.com/webstore/detail/syntheticeye-ai-detector/jhnehjooeiopekmlgcpmdmliifccjhlj?hl=en", "_blank");
+  };  
 
   return (
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY} font-poppins`}>
@@ -50,7 +54,8 @@ const Hero = () => {
       className="absolute z-10 md:right-36 md:-top-0 md:mt-4 md:opacity-60 mt-[-180px] opacity-40 md:h-[350px] md:w-[470px] w-[350px] h-[175px] md:visible invisible" 
   />
 
-      <Button handleClick={handleOpenPopup} text="Try it!" className=""/>
+      <Button handleClick={handleClick} text="Try it" className="mr-4"/>
+      <Button handleClick={handleButtonClick} text="Get Extension" variant="outline" className="hidden md:inline-block"/>
       <Popup isOpen={isOpen} handleClose={handleClosePopup} />
 
         {/* Quote */}

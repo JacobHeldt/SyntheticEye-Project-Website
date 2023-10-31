@@ -42,7 +42,7 @@ const Navbar = () => {
             } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
           <ul className='list-none flex-col justify-end items-start flex-1'>
           {navLinks.map((nav, index) => (
-            <li key={nav.id} onClick={() => navigation(nav.id)} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10 mb-4' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10' } ${active === nav.title ? "text-white" : "text-dimWhite"}`}>
+            <li key={nav.id} onClick={() => navigation(nav.id)} className={`font-poppins font-normal cursor-pointer text-base text-white mr-10 mb-4 mt-1' ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10' } ${active === nav.title ? "text-white" : "text-dimWhite"}`}>
                 {nav.title}
             </li>
           ))}

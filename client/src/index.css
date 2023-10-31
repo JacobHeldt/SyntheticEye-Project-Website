@@ -355,9 +355,6 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-
-
-
 .slider {
   display: flex;
   overflow-x: scroll;
@@ -490,4 +487,8 @@
   height: 240px;
   width: auto; 
   border-radius: 5px;
+}
+
+.blur-background {
+  backdrop-filter: blur(10px);
 }

@@ -95,7 +95,7 @@ const Models = () => {
         <div className='font-light text-base mt-2 text-white mb-6'>Argus, named after the all-seeing giant from Greek mythology, is our AI model that identifies various types of AI-generated images using cutting-edge machine learning.</div>
         <div className='w-full flex justify-center'>
             <Button 
-                handleClick={handleOpenPopupAletheia} 
+                handleClick={handleOpenPopupArgus} 
                 text="Try it" 
                 style={{ zIndex: 5000 }} 
                 className="text-black"
@@ -119,7 +119,7 @@ const Models = () => {
         <div className='w-full text-center text-xl font-secondary'>AI-Text Detector</div>
         <div className='font-light text-base mt-2 text-white mb-6'>Hermes, inspired by the Greek messenger god of speed and communication, is our AI model for distinguishing genuine human-written text from AI-generated content using machine learning.</div>
         <div className='w-full flex justify-center'>
-        <div className='primary-gradient tracking-wider font-righteous  md:px-9 md:py-2 text-lg z-50 uppercase rounded-md hover:rounded-lg w-52 py-1 text-balck opacity-70 text-center'>
+        <div className='primary-gradient tracking-wider font-righteous  md:px-9 md:py-2 text-lg z-50 uppercase rounded-md hover:rounded-lg w-52 py-1 text-black opacity-60 text-center'>
           In Progress
         </div>
         </div>

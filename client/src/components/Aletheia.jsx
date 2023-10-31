@@ -15,6 +15,8 @@ const Aletheia = () => {
 
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const [imageSrc, setImageSrc] = useState(null);
+
     useEffect(() => {
         setIsLoaded(true);
     }, []);
@@ -50,7 +52,7 @@ const Aletheia = () => {
             if (process.env.NODE_ENV === "development") {
                 data = await mockServerResponse();
             } else {
-                const response = await fetch('https://syntheticeye-dev.onrender.com/predict', {
+                const response = await fetch('https://syntheticeye-dev.onrender.com/predict-argus', {
                     method: 'POST',
                     mode: 'cors',
                     body: formData,
@@ -89,7 +91,7 @@ const Aletheia = () => {
                     // This is where you mock the probability value
                     probability: Math.random() // This will return a random value between 0 and 1
                 });
-            }, 2000);
+            }, 800);
         });
     }
 
@@ -106,6 +108,14 @@ const Aletheia = () => {
         setIsFileHovering(false);
     };
 
+    useEffect(() => {
+        return () => {
+            if (imageSrc) {
+                URL.revokeObjectURL(imageSrc);
+            }
+        };
+    }, [imageSrc]);
+
     function triggerFileInput(e) {
         e.stopPropagation();
         fileInput.current.click();
@@ -114,8 +124,12 @@ const Aletheia = () => {
 
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            const imageURL = URL.createObjectURL(file);
+            setImageSrc(imageURL);
             setFileSelected(true);
         } else {
+            setImageSrc(null);
             setFileSelected(false);
         }
     };
@@ -171,7 +185,7 @@ const Aletheia = () => {
                         setIsFileHovering(false);
                     }}
                     onDrop={handleFileDrop}
-                    className={`h-64 md:py-16 py-6 px-16 border-secondary ${fileSelected ? 'opacity-100' : 'opacity-70'} file_border_radius text-center cursor-pointer ${isFileHovering ? 'bg-gray-800' : ''} hover:bg-gray-800 text-white flex items-center justify-center overflow-hidden`}
+                    className={`h-[272px] md:py-16 py-6 px-16 border-secondary ${fileSelected ? 'opacity-100' : 'opacity-70'} file_border_radius text-center cursor-pointer ${isFileHovering ? 'bg-gray-800' : ''} hover:bg-gray-800 text-white flex items-center justify-center overflow-hidden`}
                 >
                     <input 
                         type="file" 
@@ -180,10 +194,11 @@ const Aletheia = () => {
                         ref={fileInput} 
                         onChange={handleFileChange}
                     />
+
                     <div className={`${fileSelected ? 'opacity-90' : 'opacity-90'} flex items-center justify-center h-full w-full text-lg`}>
                         {
                             fileSelected 
-                            ? <AiFillCheckCircle size={32} />
+                            ? imageSrc && <img src={imageSrc} alt="Uploaded Preview" className="uploaded-image-height-fill" />
                             : "Click or drop file here to upload"
                         }
                     </div>
@@ -237,72 +252,80 @@ const Aletheia = () => {
                     </div>
                 </div>
                 
-                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-50 text-gray-200 text-center p-4 text-sm">
+                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-60 text-gray-200 text-center p-4 text-sm">
                     <b>Warning:</b> Although this model has archieved a high accuracy on mutlitple generators, please be mindful that its predictions may not always be correct.
                     </div>
 
                     <div className='text-gray-300 py-14 w-full bg-gray-50 bg-opacity-10'>
                         <h1 className='text-lg mb-4'>Aletheia was trained on images from the following sources:</h1>
                         <div className='md:mx-56 mx-2 text-sm'>
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-3">The Synthetic Faces High Quality (SFHQ) part 3.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-1">The Synthetic Faces High Quality (SFHQ) part 1.</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/bwandowando/faces-dataset-using-stable-diffusion-v14">Face Dataset Using Stable Diffusion v.1.4</a> <br /><br />
-                        <a target='blank' className='underline' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/sbaghbidi/human-faces-object-detection?select=images">Human Faces (Object Detection) from kaggle</a> <br /><br />
-                        <a target='blank' className='underline' href='https://www.kaggle.com/datasets/vbookshelf/art-by-ai-neural-style-transfer'>Art by Ai - Neural Style Transfer</a> <br /> <br />
-                        <a target='blank' className='underline' href='https://synthesis.ai/diverse-human-faces-dataset/'>Open Dataset for ML Training: Diverse Human Faces</a> <br /> <br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br /> 
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-3">The Synthetic Faces High Quality (SFHQ) part 3.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-1">The Synthetic Faces High Quality (SFHQ) part 1.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/bwandowando/faces-dataset-using-stable-diffusion-v14">Face Dataset Using Stable Diffusion v.1.4</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/sbaghbidi/human-faces-object-detection?select=images">Human Faces (Object Detection) from kaggle</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://www.kaggle.com/datasets/vbookshelf/art-by-ai-neural-style-transfer'>Art by Ai - Neural Style Transfer</a> <br /> <br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://synthesis.ai/diverse-human-faces-dataset/'>Open Dataset for ML Training: Diverse Human Faces</a> <br /> <br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br /> 
 
 
-                        <p>
-                            CelebA: Liu, Ziwei; Luo, Ping; Wang, Xiaogang; Tang, Xiaoou. (2015). 
-                            <i> Deep Learning Face Attributes in the Wild</i>. 
-                            Proceedings of International Conference on Computer Vision (ICCV), December 2015.
-                            [<a target='blank' href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" rel="noopener noreferrer">Link</a>]
-                        </p><br />
-                        <p>
-                            Bae, Gwangbin; de La Gorce, Martin; Baltrušaitis, Tadas; Hewitt, Charlie; Chen, Dong; 
-                            Valentin, Julien; Cipolla, Roberto; Shen, Jingjing. (2023). 
-                            <i> DigiFace-1M: 1 Million Digital Face Images for Face Recognition</i>. 
-                            2023 IEEE Winter Conference on Applications of Computer Vision (WACV), IEEE.
-                            [<a target='blank' href="https://microsoft.github.io/DigiFace1M/">Link</a>]
-                        </p><br />
-                        <p>
-                            Gary B. Huang, Manu Ramesh, Tamara Berg, Erik Learned-Miller. (2007). 
-                            <i>Labeled Faces in the Wild: A Database for Studying Face Recognition in Unconstrained Environments</i>. 
-                            University of Massachusetts, Amherst, Technical Report 07-49. [<a target='blank' href="http://vis-www.cs.umass.edu/lfw/">Labeled Faces in the Wild</a>]
-                        </p> <br />
-                        <div className="citation">
-                            <a target='https://www.cs.columbia.edu/CAVE/databases/pubfig/'>Pubfig:   </a>
-                            N. Kumar, A. C. Berg, P. N. Belhumeur, and S. K. Nayar, 
-                            <i>"Attribute and Simile Classifiers for Face Verification,"</i> 
-                            in Proceedings of the International Conference on Computer Vision (ICCV), 2009.
-                        </div> <br />
+                        <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                        <p className="text-xs font-semibold">Reference:</p>
+                        <p className="text-sm">
+                            Liu, Z., Luo, P., Wang, X., & Tang, X. (2015). 
+                            <i className="font-medium">Deep Learning Face Attributes in the Wild</i>. 
+                            In Proceedings of International Conference on Computer Vision (ICCV), December 2015.
+                        </p>
+                        </div>
+
+                       <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Bae, G., de La Gorce, M., Baltrušaitis, T., Hewitt, C., Chen, D., Valentin, J., Cipolla, R., & Shen, J. (2023).
+                                <i className="font-medium">DigiFace-1M: 1 Million Digital Face Images for Face Recognition</i>. 
+                                In 2023 IEEE Winter Conference on Applications of Computer Vision (WACV). IEEE.
+                            </p>
+                        </div>
+
+                        <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Huang, G. B., Ramesh, M., Berg, T., & Learned-Miller, E. (2007).
+                                <i className="font-medium">Labeled Faces in the Wild: A Database for Studying Face Recognition in Unconstrained Environments</i>. 
+                                Technical Report No. 07-49, University of Massachusetts, Amherst, October 2007.
+                            </p>
+                        </div>
+
+                        <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Kumar, N., Berg, A. C., Belhumeur, P. N., & Nayar, S. K. (2009). 
+                                <i className="font-medium">Attribute and Simile Classifiers for Face Verification</i>. 
+                                International Conference on Computer Vision (ICCV), 2009.
+                            </p>
+                        </div>
 
                         
-                        <p>
-                            <a href='https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/'>IMDB-Wiki Dataset: </a>Rothe, Rasmus; Timofte, Radu; Van Gool, Luc. (2018). 
-                            <i>Deep expectation of real and apparent age from a single image without facial landmarks</i>. 
-                            International Journal of Computer Vision, Volume 126, Issue 2-4, pp. 144–157, Springer.
-                            [<a target='blank' href="#" rel="noopener noreferrer">Link</a>]
-                        </p>
+                        <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Rothe, R., Timofte, R., & Van Gool, L. (2015). 
+                                <i className="font-medium">DEX: Deep EXpectation of apparent age from a single image</i>. 
+                                IEEE International Conference on Computer Vision Workshops (ICCVW), December 2015.
+                            </p>
+                        </div>
 
-                        <p>
-                            Rothe, Rasmus; Timofte, Radu; Van Gool, Luc. (2015). 
-                            <i>DEX: Deep EXpectation of apparent age from a single image</i>. 
-                            Proceedings of the IEEE International Conference on Computer Vision Workshops (ICCVW), December 2015.
-                            [<a target='blank' href="#" rel="noopener noreferrer">Link</a>]
-                        </p><br />
-
-                        <p>
-                            Zhang, Zhifei; Song, Yang; Qi, Hairong. (2017). 
-                            <i>Age Progression/Regression by Conditional Adversarial Autoencoder</i>. 
-                            IEEE Conference on Computer Vision and Pattern Recognition (CVPR), IEEE.
-                            [<a target='blank' href="https://susanqq.github.io/UTKFace/" rel="noopener noreferrer">Link</a>]
-                        </p><br />
+                        <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Zhang, Z., Song, Y., & Qi, H. (2017). 
+                                <i className="font-medium">Age Progression/Regression by Conditional Adversarial Autoencoder</i>. 
+                                IEEE Conference on Computer Vision and Pattern Recognition (CVPR). IEEE.
+                            </p>
+                        </div>
 
                         <p>We generated images ourselves using <a href='https://www.bing.com/create'>Bing image creator</a></p> <br />
 

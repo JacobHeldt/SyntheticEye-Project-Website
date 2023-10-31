@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useRef } from 'react';
 import Hero from './Hero';
 import Project from './Project';
 import Aboutus from './Aboutus';
@@ -13,17 +13,25 @@ const FadingAboutus = withScrollFadeIn(Aboutus);
 const FadingModels = withScrollFadeIn(Models);
 
 const HomePage = () => {
+  const modelsRef = useRef(null); // Create a ref
+
+  const scrollToModels = () => {
+    modelsRef.current.scrollIntoView({ behavior: 'smooth' });  // Smoothly scroll to Models section
+  }
+
   return (
     <div>
       <Navbar />
-      <div className='bg-primary mt-24' id="Home">
-        <FadingHero id="hero" delay={200} />
+      <div className='bg-primary mt-28' id="Home">
+        <FadingHero id="hero" delay={200} handleClick={scrollToModels} /> {/* Pass the function down */}
       </div>
 
       <Divider />
 
       <div className='bg-primary '>
-        <FadingModels id="models" />
+        <div ref={modelsRef}> {/* Attach the ref */}
+          <FadingModels id="models" />
+        </div>
         <Divider />
         <FadingProject id="project" />
         <Divider />

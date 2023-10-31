@@ -74,10 +74,10 @@ const Argus = () => {
 
     const getCategoryFromProbability = (probability) => {
         console.log('Probability:', probability);
-        if (probability < 0.15) return { label: "Likely AI-Generated", color: "red" };
-        else if (probability < 0.35) return { label: "Possibly AI-Generated", color: "light-red" };
-        else if (probability < 0.55) return { label: "Unsure", color: "yellow" };
-        else if (probability < 0.8) return { label: "Probably Real", color: "light-green" };
+        if (probability < 0.1) return { label: "Likely AI-Generated", color: "red" };
+        else if (probability < 0.25) return { label: "Possibly AI-Generated", color: "light-red" };
+        else if (probability < 0.5) return { label: "Unsure", color: "yellow" };
+        else if (probability < 0.75) return { label: "Probably Real", color: "light-green" };
         else if (probability < 1) return { label: "Likely Real", color: "green" };
         else return { label: "Debug", color: "green" };
         // return { label: "Probably AI-Generated", color: "light-red" };
@@ -142,7 +142,7 @@ const Argus = () => {
 
         <div className={`text-center font-poppins mt-2 ${isLoaded ? 'fade-in' : ''}`}>
                 <div className='text-white md:text-8xl text-5xl pt-16 pb-2 font-white font-righteous'>Argus</div>
-                <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>General AI-Image Detection <span className='text-gray-300'>- Beta Version</span></div>
+                <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>General AI-Image Detection</div>
 
                 <div className="flex items-center justify-center">
 
@@ -250,27 +250,56 @@ const Argus = () => {
                     </div>
                 </div>
                 
-                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-70 text-gray-200 text-center p-4 text-base">
-                    <b>Warning:</b> This model is still in beta and may give inaccurate predictions
+                <div className="mt-8 left-0 w-full bg-red-500 bg-opacity-60 text-gray-200 text-center p-4 text-base">
+                    <b>Warning:</b> Although this model has archieved a high accuracy on mutlitple generators, please be mindful that its predictions may not always be correct.
                     </div>
 
                     <div className='text-gray-300 py-14 w-full bg-gray-50 bg-opacity-10'>
                         <h1 className='text-lg mb-4'>Argus was trained on images from the following sources:</h1>
                         <div className='md:mx-56 mx-2 text-sm'>
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images">CIFAKE: Real and AI-Generated Synthetic Images</a> <br /><br />
-                        <a target='blank' className='underline' href="https://huggingface.co/datasets/dalle-mini/open-images">Dalle-Mini Open-Images</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.kaggle.com/datasets/superpotato9/dalle-recognition-dataset">dalle recognition dataset</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.bing.com/create">Bing Image Creator</a> <br /><br />
-                        <a target='blank' className='underline' href="https://lexica.art/">Lexica</a> <br /><br />
-                        <a target='blank' className='underline' href="https://www.craiyon.com/">Craiyon</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images">CIFAKE: Real and AI-Generated Synthetic Images</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://huggingface.co/datasets/dalle-mini/open-images">Dalle-Mini Open-Images</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/superpotato9/dalle-recognition-dataset">dalle recognition dataset</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/saberghaderi/google-universal-image-256x256-guie-jpgcsv">Google Universal Image 256x256 GUIE JPGCSV</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.bing.com/create">Bing Image Creator</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://lexica.art/">Lexica</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.craiyon.com/">Craiyon</a> <br /><br />
 
 
-                        <p className="">
-                        Large-Scale Prompt Gallery Dataset for Text-to-Image Generative Models: Wang, Zijie J.; Montoya, Evan; Munechika, David; Yang, Haoyang; Hoover, Benjamin; Chau, Duen Horng. (2022). 
-                        <i>arXiv:2210.14896 [cs]</i>. 
-                        [<a target='_blank' href="https://arxiv.org/abs/2210.14896" rel="noopener noreferrer">Link</a>]
+                        <div className="p-4 bg-gray-900 rounded-lg shadow-md mb-6">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Wang, Z. J., Montoya, E., Munechika, D., Yang, H., Hoover, B., & Chau, D. H. (2022).
+                                <i className="font-medium">DiffusionDB: A Large-Scale Prompt Gallery Dataset for Text-to-Image Generative Models</i>. 
+                                arXiv:2210.14896 [cs].
+                            </p>
+                            <a href="https://arxiv.org/abs/2210.14896" className="text-xs text-blue-500 underline mt-2 inline-block" target="_blank" rel="noopener noreferrer">
+                                Link: https://arxiv.org/abs/2210.14896
+                            </a>
+                        </div>
+
+                        <div className="p-4 bg-gray-900 rounded-lg shadow-md mb-6">
+                            <p className="text-xs font-semibold">Reference:</p>
+                            <p className="text-sm">
+                                Li, F.-F., Andreeto, M., Ranzato, M., & Perona, P. (2022). 
+                                <i className="font-medium">Caltech 101 (1.0)</i> [Data set]. CaltechDATA. 
+                            </p>
+                            <a href="https://doi.org/10.22002/D1.20086" className="text-xs text-blue-500 underline mt-2 inline-block" target="_blank" rel="noopener noreferrer">
+                                https://doi.org/10.22002/D1.20086
+                            </a>
+                        </div>
+
+                        <div className="p-4 bg-gray-900 rounded-lg shadow-md mb-6">
+                        <p className="text-xs font-semibold">Reference:</p>
+                        <p className="text-sm">
+                            Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S., ... & Fei-Fei, L. (2015). 
+                            <i className="font-medium">ImageNet Large Scale Visual Recognition Challenge</i>. 
+                            International Journal of Computer Vision (IJCV), 115(3), 211-252.
                         </p>
-                        <br />
+                        <a href="https://doi.org/10.1007/s11263-015-0816-y" className="text-xs text-blue-500 underline mt-2 inline-block" target="_blank" rel="noopener noreferrer">
+                            DOI: 10.1007/s11263-015-0816-y
+                        </a>
+                        </div>
                         
 
                         </div>

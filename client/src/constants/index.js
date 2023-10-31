@@ -38,7 +38,7 @@ export const navLinks = [
     },
     {
         id: "argus",
-        title: "Image Detection  (beta)"
+        title: "Image Detection"
     },
     {
         id: "content-library-general",
