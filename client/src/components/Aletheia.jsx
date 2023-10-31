@@ -140,7 +140,7 @@ const Aletheia = () => {
         <div className='bg-primary'>
         <Navbar />
 
-        <div className={`text-center font-poppins mt-2 ${isLoaded ? 'fade-in' : ''}`}>
+        <div className={`text-center font-poppins mt-6 ${isLoaded ? 'fade-in' : ''}`}>
                 <div className='text-white md:text-8xl text-5xl pt-16 pb-2 font-white font-righteous'>Aletheia</div>
                 <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>AI-GENERATED FACE DETECTION</div>
 
