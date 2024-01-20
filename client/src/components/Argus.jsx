@@ -74,10 +74,10 @@ const Argus = () => {
 
     const getCategoryFromProbability = (probability) => {
         console.log('Probability:', probability);
-        if (probability < 0.1) return { label: "Likely AI-Generated", color: "red" };
-        else if (probability < 0.25) return { label: "Possibly AI-Generated", color: "light-red" };
-        else if (probability < 0.5) return { label: "Unsure", color: "yellow" };
-        else if (probability < 0.75) return { label: "Probably Real", color: "light-green" };
+        if (probability < 0.2) return { label: "Likely AI-Generated", color: "red" };
+        else if (probability < 0.4) return { label: "Possibly AI-Generated", color: "light-red" };
+        else if (probability < 0.6) return { label: "Unsure", color: "yellow" };
+        else if (probability < 0.8) return { label: "Probably Real", color: "light-green" };
         else if (probability < 1) return { label: "Likely Real", color: "green" };
         else return { label: "Debug", color: "green" };
         // return { label: "Probably AI-Generated", color: "light-red" };

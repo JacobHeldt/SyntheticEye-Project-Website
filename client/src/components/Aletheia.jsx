@@ -52,7 +52,7 @@ const Aletheia = () => {
             if (process.env.NODE_ENV === "development") {
                 data = await mockServerResponse();
             } else {
-                const response = await fetch('https://syntheticeye-dev.onrender.com/predict-argus', {
+                const response = await fetch('https://syntheticeye-dev.onrender.com/predict-aletheia4', {
                     method: 'POST',
                     mode: 'cors',
                     body: formData,
@@ -259,18 +259,6 @@ const Aletheia = () => {
                     <div className='text-gray-300 py-14 w-full bg-gray-50 bg-opacity-10'>
                         <h1 className='text-lg mb-4'>Aletheia was trained on images from the following sources:</h1>
                         <div className='md:mx-56 mx-2 text-sm'>
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-3">The Synthetic Faces High Quality (SFHQ) part 3.</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-1">The Synthetic Faces High Quality (SFHQ) part 1.</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/bwandowando/faces-dataset-using-stable-diffusion-v14">Face Dataset Using Stable Diffusion v.1.4</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/sbaghbidi/human-faces-object-detection?select=images">Human Faces (Object Detection) from kaggle</a> <br /><br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://www.kaggle.com/datasets/vbookshelf/art-by-ai-neural-style-transfer'>Art by Ai - Neural Style Transfer</a> <br /> <br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://synthesis.ai/diverse-human-faces-dataset/'>Open Dataset for ML Training: Diverse Human Faces</a> <br /> <br />
-                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br /> 
-
 
                         <div className="p-4 mb-4 bg-gray-900 rounded-lg shadow-md">
                         <p className="text-xs font-semibold">Reference:</p>
@@ -325,11 +313,21 @@ const Aletheia = () => {
                                 <i className="font-medium">Age Progression/Regression by Conditional Adversarial Autoencoder</i>. 
                                 IEEE Conference on Computer Vision and Pattern Recognition (CVPR). IEEE.
                             </p>
-                        </div>
+                        </div> <br />
 
-                        <p>We generated images ourselves using <a href='https://www.bing.com/create'>Bing image creator</a></p> <br />
-
-                        <p>Images from <a href='https://lexica.art/'>Lexica</a></p>
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces">The 140k Real and Fake Faces dataset created by Gaurav Dutta and Xhlulu.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-4">The Synthetic Faces High Quality (SFHQ) part 4.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-3">The Synthetic Faces High Quality (SFHQ) part 3.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/selfishgene/synthetic-faces-high-quality-sfhq-part-1">The Synthetic Faces High Quality (SFHQ) part 1.</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/bwandowando/faces-dataset-using-stable-diffusion-v14">Face Dataset Using Stable Diffusion v.1.4</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://generated.photos">Free Dataset for Academic Research by Generated Photos</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/uditsharma72/real-vs-fake-faces">Real vs fake faces from kaggle</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/sbaghbidi/human-faces-object-detection?select=images">Human Faces (Object Detection) from kaggle</a> <br /><br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://www.kaggle.com/datasets/vbookshelf/art-by-ai-neural-style-transfer'>Art by Ai - Neural Style Transfer</a> <br /> <br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href='https://synthesis.ai/diverse-human-faces-dataset/'>Open Dataset for ML Training: Diverse Human Faces</a> <br /> <br />
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://www.kaggle.com/datasets/ashwingupta3012/human-faces?select=Humans">Human Faces from kaggle</a> <br /><br /> 
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://lexica.art/">Lexica</a> <br /><br /> 
+                        <a target='blank' className='underline p-2 bg-gray-900 rounded-lg shadow-md mb-6' href="https://lexica.art/">We generated images ourselves using Bing image creator</a> <br /><br /> 
 
                         </div>
                     </div>

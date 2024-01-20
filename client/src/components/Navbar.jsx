@@ -24,7 +24,10 @@ const Navbar = () => {
   return (
     <div>
       <div className='flex py-4 justify-between items-center fixed top-0 z-50 w-full px-8 md:px-36 navbar black-opac-bg backdrop-blur-lg'>
-        <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px] z-10 cursor-pointer' onClick={navigateHome} />
+        <div className='flex items-center cursor-pointer' onClick={navigateHome} >
+        <img src={logo} alt="syntheticeye logo" className='w-[40px] h-[40px] z-10'/>
+        <h3 className='text-white ml-4 text-xl font-righteous'>SyntheticEye</h3>
+        </div>
 
         <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
           {navLinks.map((nav, index) => (
