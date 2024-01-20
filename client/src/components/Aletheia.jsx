@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { DotLoader, RingLoader } from "react-spinners";
-import { AiFillCheckCircle } from 'react-icons/ai';
+import { AiFillCheckCircle, AiOutlineInfoCircle } from 'react-icons/ai';
 import FaceDetectors from './FaceDetectors';
 
 const Aletheia = () => {
@@ -169,15 +169,33 @@ const Aletheia = () => {
         red: 'bg-red-500',
       };
 
-    const ProgressBar = ({ label, value, color }) => (
-        <div className="flex items-center gap-2">
-            <span className="text-white w-12">{label}</span>
-            <div className="w-full bg-gray-700 rounded-full h-2.5 dark:bg-gray-700">
-                <div className={`${colorClasses[color]} h-2.5 rounded-full`} style={{ width: `${value}%` }}></div>
+    const ProgressBar = ({ label, value, color, tooltipContent }) => {
+        const [showTooltip, setShowTooltip] = useState(false);
+    
+        return (
+            <div className="flex items-center gap-3 mt-2">
+                <span className="text-white w-24 flex items-center">
+                    {label}
+                    <div className="relative ml-2">
+                        <AiOutlineInfoCircle
+                            onMouseEnter={() => setShowTooltip(true)}
+                            onMouseLeave={() => setShowTooltip(false)}
+                            className="text-white cursor-help"
+                        />
+                        {showTooltip && (
+                            <div className="absolute z-10 w-52 p-2 -mt-6 text-sm leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-gray-800 rounded-md shadow-lg">
+                                {tooltipContent}
+                            </div>
+                        )}
+                    </div>
+                </span>
+                <div className="w-full bg-gray-700 rounded-full h-3.5 dark:bg-gray-700">
+                    <div className={`${colorClasses[color]} h-3.5 rounded-full`} style={{ width: `${value}%` }}></div>
+                </div>
+                <span className="text-white">{value.toFixed(1)}%</span>
             </div>
-            <span className="text-white">{value.toFixed(1)}%</span>
-        </div>
-    );    
+        );
+    };
 
     const Popup = () => {
         // Assuming 'result.probabilities' contains your probability data
@@ -188,16 +206,31 @@ const Aletheia = () => {
     
         return (
             <div className={`fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 ${showPopup ? '' : 'hidden'}`}>
-                <div className="relative top-20 mx-auto p-5 w-96 shadow-lg rounded-md bg-primary">
+                <div className="relative top-20 mx-auto px-12 py-16 w-[600px] shadow-lg rounded-md bg-primary">
                     <div className="mt-3 text-center">
-                        <h3 className="text-lg leading-6 font-medium text-gray-100">Learn More (beta)</h3>
-                        <div className="mt-2 px-7 py-3">
-                            <ProgressBar label="Real" value={realPercent} color="green" />
-                            <ProgressBar label="GAN" value={ganPercent} color="red" />
-                            <ProgressBar label="CG" value={cgPercent} color="red" />
+                        <h3 className="text-2xl leading-6 font-medium text-gray-100 font-righteous">Learn More (beta)</h3>
+                        <div className="mt-2 px-7 py-5">                       
+                            <ProgressBar
+                                label="Real"
+                                value={realPercent}
+                                color="green"
+                                tooltipContent="This is the probability that the face is real."
+                            />
+                            <ProgressBar
+                                label="GAN"
+                                value={ganPercent}
+                                color="red"
+                                tooltipContent="Indicates the chance that the face was created by a Generative Adversarial Network (GAN), such as StyleGAN, which can generate photorealistic images."
+                            />
+                            <ProgressBar
+                                label="CG"
+                                value={cgPercent}
+                                color="red"
+                                tooltipContent="This probability reflects whether the face is computer-generated, encompassing creations from AI models like Stable Diffusion to synthetic datasets like DigiFace-1M."
+                            />
                         </div>
                         <div className="items-center px-4 py-3">
-                            <button onClick={togglePopup} className="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                            <button onClick={togglePopup} className="px-4 py-2 bg-gray-700 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300">
                                 Close
                             </button>
                         </div>
