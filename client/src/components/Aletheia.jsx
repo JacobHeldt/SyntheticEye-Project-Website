@@ -72,16 +72,23 @@ const Aletheia = () => {
         }
     };
 
-    const getCategoryFromProbability = (probability) => {
-        console.log('Probability:', probability);
-        if (probability < 0.1) return { label: "Likely AI-Generated", color: "red" };
-        else if (probability < 0.2) return { label: "Possibly AI-Generated", color: "light-red" };
-        else if (probability < 0.5) return { label: "Unsure", color: "yellow" };
-        else if (probability < 0.7) return { label: "Probably Real", color: "light-green" };
-        else if (probability < 1.01) return { label: "Likely Real", color: "green" };
-        else return { label: "Debug", color: "green" };
-        // return { label: "Probably AI-Generated", color: "light-red" };
-    }
+    const getCategoryFromProbabilities = (probabilities) => {
+        console.log('Probabilities:', probabilities);
+    
+        // Destructure the probabilities for easier comparison
+        const { CG, GAN, Real } = probabilities;
+    
+        // Define threshold for considering something as more probable
+        const threshold = 0.2; 
+    
+        if (CG > Real + threshold || GAN > Real + threshold) {
+            return { label: "AI-Generated", color: "red" };
+        } else if (Real > CG + threshold && Real > GAN + threshold) {
+            return { label: "Likely Real", color: "green" };
+        } else {
+            return { label: "Unsure", color: "yellow" };
+        }
+    };
 
     const mockServerResponse = () => {
         // Simulating a delay of 1 second (1000ms)
