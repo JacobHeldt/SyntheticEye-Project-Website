@@ -72,14 +72,14 @@ const Aletheia = () => {
         }
     };
 
-    const getCategoryFromProbabilities = (probabilities) => {
+    const getCategoryFromProbability = (probabilities) => {
         console.log('Probabilities:', probabilities);
     
         // Destructure the probabilities for easier comparison
         const { CG, GAN, Real } = probabilities;
     
-        // Define threshold for considering something as more probable
-        const threshold = 0.2; 
+        // Define a threshold for considering something as much more probable
+        const threshold = 0.2; // This value can be adjusted based on your requirements
     
         if (CG > Real + threshold || GAN > Real + threshold) {
             return { label: "AI-Generated", color: "red" };
