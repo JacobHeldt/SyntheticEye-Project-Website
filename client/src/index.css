@@ -395,50 +395,50 @@
 /* For prediction Circles */
 
 .circle-red {
-  border: 3px solid #FF3333;
-  border-radius: 15px;
-  width: 300px;
-  height: 65px;
+  border: 2px solid #FF3333;
+  border-radius: 10px;
+  width: 275px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FF3333;
 }
 .circle-light-red {
-  border: 3px solid #FFB3B3;
-  border-radius: 15px;
-  width: 300px;
-  height: 65px;
+  border: 2px solid #FFB3B3;
+  border-radius: 10px;
+  width: 275px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFB3B3
 }
 .circle-yellow {
-  border: 3px solid #FFF44F;
-  border-radius: 15px;
-  width: 300px;
-  height: 65px;
+  border: 2px solid #FFF44F;
+  border-radius: 10px;
+  width: 275px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFF44F;
 }
 .circle-light-green {
-  border: 3px solid #b3ffdac4;
+  border: 2px solid #b3ffdac4;
   border-radius: 15px;
-  width: 300px;
-  height: 65px;
+  width: 275px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #b3ffdac4;
 }
 .circle-green {
-  border: 3px solid #33FF9C;
-  border-radius: 15px;
-  width: 300px;
-  height: 65px;
+  border: 2px solid #33FF9C;
+  border-radius: 10px;
+  width: 275px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -491,4 +491,8 @@
 
 .blur-background {
   backdrop-filter: blur(10px);
+}
+
+.blur-effect {
+  filter: blur(5px);
 }

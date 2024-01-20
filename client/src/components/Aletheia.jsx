@@ -48,9 +48,10 @@ const Aletheia = () => {
         try {
             let data;
     
-            // Check if the environment is development or not
             if (process.env.NODE_ENV === "development") {
                 data = await mockServerResponse();
+                console.log('Received mock data:', data);
+                setResult({ probabilities: data });
             } else {
                 const response = await fetch('https://syntheticeye-dev.onrender.com/predict-aletheia4', {
                     method: 'POST',
@@ -60,10 +61,16 @@ const Aletheia = () => {
                         'Accept': 'application/json'
                     }
                 });
-                data = await response.json();
+
+                data = await response.json(); // Convert the response to JSON
+
+                // Check if the required fields are present in the data
+                if (data.CG !== undefined && data.GAN !== undefined && data.Real !== undefined) {
+                    setResult({ probabilities: data });
+                } else {
+                    throw new Error("Invalid response structure");
+                }
             }
-    
-            setResult(data);
         } catch (err) {
             console.error('Error:', err);
             setError("An error occurred. Please try again.");
@@ -73,13 +80,16 @@ const Aletheia = () => {
     };
 
     const getCategoryFromProbability = (probabilities) => {
+        if (!probabilities || probabilities.CG === undefined || probabilities.GAN === undefined || probabilities.Real === undefined) {
+            console.error('Invalid or empty probabilities object');
+            return { label: "Error", color: "grey" };
+        }
+    
         console.log('Probabilities:', probabilities);
     
-        // Destructure the probabilities for easier comparison
         const { CG, GAN, Real } = probabilities;
     
-        // Define a threshold for considering something as much more probable
-        const threshold = 0.2; // This value can be adjusted based on your requirements
+        const threshold = 0.2;
     
         if (CG > Real + threshold || GAN > Real + threshold) {
             return { label: "AI-Generated", color: "red" };
@@ -91,14 +101,16 @@ const Aletheia = () => {
     };
 
     const mockServerResponse = () => {
-        // Simulating a delay of 1 second (1000ms)
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve({
-                    // This is where you mock the probability value
-                    probability: Math.random() // This will return a random value between 0 and 1
-                });
-            }, 800);
+                const responseData = {
+                    "CG": 0.24691550731658936,
+                    "GAN": 0.44691550731658936,
+                    "Real": 0.5530510544776917
+                };
+                console.log('Mock response:', responseData);
+                resolve(responseData);
+            }, 200); // Simulate a delay
         });
     }
 
@@ -143,10 +155,65 @@ const Aletheia = () => {
 
     const [isFileHovering, setIsFileHovering] = useState(false);
 
+
+    // Add a new state for managing the popup visibility
+    const [showPopup, setShowPopup] = useState(false);
+
+    // Function to toggle the popup
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
+    const colorClasses = {
+        green: 'bg-green-500',
+        red: 'bg-red-500',
+      };
+
+    const ProgressBar = ({ label, value, color }) => (
+        <div className="flex items-center gap-2">
+            <span className="text-white w-12">{label}</span>
+            <div className="w-full bg-gray-700 rounded-full h-2.5 dark:bg-gray-700">
+                <div className={`${colorClasses[color]} h-2.5 rounded-full`} style={{ width: `${value}%` }}></div>
+            </div>
+            <span className="text-white">{value.toFixed(1)}%</span>
+        </div>
+    );    
+
+    const Popup = () => {
+        // Assuming 'result.probabilities' contains your probability data
+        const { CG, GAN, Real } = result.probabilities;
+        const cgPercent = CG * 100;
+        const ganPercent = GAN * 100;
+        const realPercent = Real * 100;
+    
+        return (
+            <div className={`fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 ${showPopup ? '' : 'hidden'}`}>
+                <div className="relative top-20 mx-auto p-5 w-96 shadow-lg rounded-md bg-primary">
+                    <div className="mt-3 text-center">
+                        <h3 className="text-lg leading-6 font-medium text-gray-100">Learn More (beta)</h3>
+                        <div className="mt-2 px-7 py-3">
+                            <ProgressBar label="Real" value={realPercent} color="green" />
+                            <ProgressBar label="GAN" value={ganPercent} color="red" />
+                            <ProgressBar label="CG" value={cgPercent} color="red" />
+                        </div>
+                        <div className="items-center px-4 py-3">
+                            <button onClick={togglePopup} className="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+    
+
+
     return (
         <div className='bg-primary'>
         <Navbar />
-
+        {showPopup && <Popup />}
+        <div className={`main-content ${showPopup ? 'blur-effect' : ''}`}>
         <div className={`text-center font-poppins mt-6 ${isLoaded ? 'fade-in' : ''}`}>
                 <div className='text-white md:text-8xl text-5xl pt-16 pb-2 font-white font-righteous'>Aletheia</div>
                 <div className='font-secondary font-poppins md:text-xl text-lg md:tracking-widest tracking-wide pb-4'>AI-GENERATED FACE DETECTION</div>
@@ -246,10 +313,13 @@ const Aletheia = () => {
 
                         <div className='text-gray-300 mb-2'>Aletheia classifies this image as:</div>
                         {result && (
-                            <div className="flex items-center justify-center font-righteous mb-4">
-                                <div className={`circle-${getCategoryFromProbability(result.probability).color} md:text-lg text-md`}>
-                                    {getCategoryFromProbability(result.probability).label}
+                            <div className="flex flex-col items-center justify-center font-righteous mb-4">
+                                <div className={`circle-${getCategoryFromProbability(result.probabilities).color} md:text-lg text-md`}>
+                                    {getCategoryFromProbability(result.probabilities).label}
                                 </div>
+                                <button onClick={togglePopup} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    Learn More
+                                </button>
                             </div>
                         )}
 
@@ -338,13 +408,12 @@ const Aletheia = () => {
 
                         </div>
                     </div>
+                </div> 
+
                 </div>
-                
+
+            </div>
             
-
-
-                
-        </div>
 
     );
 }
